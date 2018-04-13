@@ -67,6 +67,18 @@ class MenuSeeder extends Seeder
             'uri' => 'skb'
         ]);
 
+        // 会员管理
+
+        $VIP = Menu::firstOrCreate([
+            'uri' => 'vip-users'
+        ], [
+            'parent_id' => 0,
+            'order' => 18,
+            'title' => '会员管理',
+            'icon' => 'fa-vimeo',
+            'uri' => 'vip-users'
+        ]);
+
         // 意见反馈
 
         $Suggestions = Menu::firstOrCreate([
