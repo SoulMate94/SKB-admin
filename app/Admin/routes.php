@@ -23,5 +23,9 @@ Route::group([
         'suggestions' => SkbSuggestionsController::class,
         // 会员管理
         'vip-users'  => UsersController::class,
+        // 水可邦 文章列表
+        'skb_article_list' => SkbArticleController::class,
+        // 水可邦 文章分类
+        'skb_article_cate' => SkbArticleCateController::class,
     ]);
 });

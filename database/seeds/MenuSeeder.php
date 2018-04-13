@@ -13,7 +13,7 @@ class MenuSeeder extends Seeder
     public function run()
     {
 
-        // 水可净
+        // 水可净--start
         $SKJ = Menu::firstOrCreate([
             'uri' => 'skj'
         ], [
@@ -55,17 +55,52 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-align-right', // 图标，https://fontawesome.com/icons
             'uri' => 'skj-cate' // URI
         ]);
+        // 水可净--end
 
-        // 水可邦
+        // 水可邦--start
         $SKB = Menu::firstOrCreate([
-            'uri' => 'skb'
+            'uri' => ''
         ], [
             'parent_id' => 0,
             'order' => 17,
             'title' => '水可邦',
             'icon' => 'fa-bold',
-            'uri' => 'skb'
+            'uri' => ''
         ]);
+
+        // 水可邦-文章管理
+        $SKB_article = Menu::firstOrCreate([
+            'uri' => 'skb-article'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 19,
+            'title' => '文章管理',
+            'icon' => 'fa-newspaper-o',
+            'uri' => 'skb-article'
+        ]);
+
+        // 水可邦-文章管理-文章列表
+        Menu::firstOrCreate([
+            'uri' => 'skb_article_list'
+        ], [
+            'parent_id' => $SKB_article->id,
+            'order' => 19,
+            'title' => '文章列表',
+            'icon' => 'fa-navicon',
+            'uri' => 'skb_article_list'
+        ]);
+
+        // 水可邦-文章管理-文章分类
+        Menu::firstOrCreate([
+            'uri' => 'skb_article_cate'
+        ], [
+            'parent_id' => $SKB_article->id,
+            'order' => 19,
+            'title' => '文章分类',
+            'icon' => 'fa-align-left',
+            'uri' => 'skb_article_cate'
+        ]);
+
 
         // 会员管理
 
