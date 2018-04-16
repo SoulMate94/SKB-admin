@@ -101,8 +101,40 @@ class MenuSeeder extends Seeder
             'uri' => 'skb_article_cate'
         ]);
 
+        // 水可邦-广告管理
+        $SKB_ad = Menu::firstOrCreate([
+            'uri' => 'skb_ad'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 20,
+            'title' => '广告管理',
+            'icon' => 'fa-image',
+            'uri' => 'skb_ad'
+        ]);
 
-        // 会员管理
+        // 水可邦-银行卡管理
+        Menu::firstOrCreate([
+            'uri' => 'skb_bank_card'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 21,
+            'title' => '银行卡管理',
+            'icon' => 'fa-credit-card-alt',
+            'uri' => 'skb_bank_card'
+        ]);
+
+        // 水可邦-银行卡管理
+        Menu::firstOrCreate([
+            'uri' => 'skb_present_record'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 22,
+            'title' => '提现管理',
+            'icon' => 'fa-dollar',
+            'uri' => 'skb_present_record'
+        ]);
+
+        // 水可邦-会员管理
 
         $VIP = Menu::firstOrCreate([
             'uri' => 'vip-users'
@@ -114,7 +146,7 @@ class MenuSeeder extends Seeder
             'uri' => 'vip-users'
         ]);
 
-        // 意见反馈
+        // 水可邦-意见反馈
 
         $Suggestions = Menu::firstOrCreate([
             'uri' => 'suggestions'

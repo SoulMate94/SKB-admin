@@ -13,7 +13,8 @@
         "laravel-admin-ext/helpers": "^1.0",
         "laravel-admin-ext/scheduling": "^1.0",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "zhuzhichao/bank-card-info": "^2.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

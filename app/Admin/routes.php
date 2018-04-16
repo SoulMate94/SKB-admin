@@ -27,5 +27,9 @@ Route::group([
         'skb_article_list' => SkbArticleController::class,
         // 水可邦 文章分类
         'skb_article_cate' => SkbArticleCateController::class,
+        // 水可邦 广告管理
+        'skb_ad' => SkbAdController::class,
+        // 水可邦 银行卡管理
+        'skb_bank_card' => SkbBankCardController::class,
     ]);
 });

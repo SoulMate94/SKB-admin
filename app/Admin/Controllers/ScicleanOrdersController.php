@@ -168,7 +168,8 @@ class ScicleanOrdersController extends Controller
                  ->pluck('product_name','id'));
 
             $form->text('consignee_name', '收货人姓名');
-            $form->mobile('consignee_tel', '收货人手机号码');
+            $form->mobile('consignee_tel', '收货人手机号码')
+                 ->options(['mask' => '999 9999 9999']);
             $form->text('consignee_addr', '收货人地址');
             $form->currency('sale_price', '结算价格')->symbol('￥');
             $form->number('sale_number', '销售数量');

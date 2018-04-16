@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "97e6b189c5c76cd327f70dd9bd6be52e",
+    "content-hash": "65f95dcaaada13857a631b0190e9a253",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -219,16 +219,16 @@
         },
         {
             "name": "encore/laravel-admin",
-            "version": "v1.5.10",
+            "version": "v1.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/z-song/laravel-admin.git",
-                "reference": "0b3050f3b172fac39b677c096bb87c447b24b2a4"
+                "reference": "babd3d55f6a18a7bd183ba29935f9d846335e26b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/z-song/laravel-admin/0b3050f3b172fac39b677c096bb87c447b24b2a4.zip",
-                "reference": "0b3050f3b172fac39b677c096bb87c447b24b2a4",
+                "url": "https://files.phpcomposer.com/files/z-song/laravel-admin/babd3d55f6a18a7bd183ba29935f9d846335e26b.zip",
+                "reference": "babd3d55f6a18a7bd183ba29935f9d846335e26b",
                 "shasum": ""
             },
             "require": {
@@ -285,7 +285,7 @@
                 "grid",
                 "laravel"
             ],
-            "time": "2018-03-27T16:20:07+00:00"
+            "time": "2018-04-13T06:53:17+00:00"
         },
         {
             "name": "erusev/parsedown",
@@ -2567,6 +2567,44 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "zhuzhichao/bank-card-info",
+            "version": "2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zhuzhichao/bank-card-info.git",
+                "reference": "11963e0973f92ec515341a66ef4d0ca674c2a8aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/zhuzhichao/bank-card-info/11963e0973f92ec515341a66ef4d0ca674c2a8aa.zip",
+                "reference": "11963e0973f92ec515341a66ef4d0ca674c2a8aa",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Zhuzhichao\\BankCardInfo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "zhuzhichao",
+                    "email": "me@zhuzhichao.com"
+                }
+            ],
+            "description": "Get the bank card info",
+            "keywords": [
+                "Bank",
+                "Chinese",
+                "card info"
+            ],
+            "time": "2016-09-20T15:24:50+00:00"
         }
     ],
     "packages-dev": [

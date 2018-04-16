@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\SkbArticleCateModel;
+use App\Models\SkbAdModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class SkbArticleCateController extends Controller
+class SkbAdController extends Controller
 {
     use ModelForm;
 
@@ -24,7 +24,7 @@ class SkbArticleCateController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('水可邦文章分类');
+            $content->header('水可邦广告管理');
             $content->description('description');
 
             $content->body($this->grid());
@@ -71,29 +71,26 @@ class SkbArticleCateController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(SkbArticleCateModel::class, function (Grid $grid) {
+        return Admin::grid(SkbAdModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->title('分类名称');
-            $grid->pid('上级分类')->display(function ($pid) {
-                return $pid > 0
-                ? SkbArticleCateModel::find($pid)->title
-                : '顶级分类';
-            });
-            $grid->order('分类排序')->editable()->sortable();
+            $grid->title('广告标题')->editable();
+            $grid->image('缩略图')->image('', 100, 100);
+            $grid->url('跳转链接')->urlWrapper();
+            $grid->ad_position('广告位')->display(function ($ad_position) {
+                return $ad_position == 1
+                    ? 'APP首页轮播'
+                    : '微信首页轮播';
+            })->label('primary');
+            $grid->ad_explain('广告说明')->display(function ($ad_explain) {
+                return $ad_explain ?: '暂无说明';
+            })->limit(30)->label('default');
+
+            $grid->order('排序')->sortable()->editable();
 
             $grid->created_at('创建时间');
             // $grid->updated_at();
-
-            $grid->filter(function ($filter) {
-                // 去掉默认的id过滤器
-                $filter->disableIdFilter();
-
-                $filter->like('title', '分类名称');
-            });
-
-            $grid->disableExport();
         });
     }
 
@@ -104,16 +101,23 @@ class SkbArticleCateController extends Controller
      */
     protected function form()
     {
-        return Admin::form(SkbArticleCateModel::class, function (Form $form) {
+        return Admin::form(SkbAdModel::class, function (Form $form) {
 
-            $form->display('id', 'ID');
+            // $form->display('id', 'ID');
+            $form->text('title', '广告标题');
+            $form->image('image', '图片上传');
+            // $form->image('thumb', '缩略图上传');
+            $form->url('url', '跳转链接');
 
-            $form->select('pid', '上级分类')
-                 ->options(SkbArticleCateModel::all()
-                 ->pluck('title', 'id'));
-            $form->text('title', '分类名称');
-            $form->number('order', '排序')->default(99);
-            $form->textarea('remark', '备注');
+            $AdPosition = [
+                1  => 'APP首页轮播',
+                2  => '微信首页轮播',
+            ];
+            $form->select('ad_position', '广告位')->options($AdPosition);
+
+            $form->number('order', '排序')->default('99');
+
+            $form->textarea('ad_explain', '广告说明');
 
             // $form->display('created_at', 'Created At');
             // $form->display('updated_at', 'Updated At');

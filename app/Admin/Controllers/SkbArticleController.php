@@ -96,6 +96,15 @@ class SkbArticleController extends Controller
 
             $grid->order('排序')->sortable()->editable();
 
+            $grid->filter(function ($filter) {
+                // 去掉默认的id过滤器
+                $filter->disableIdFilter();
+
+                $filter->like('title', '文章标题');
+                $filter->like('content', '文章内容');
+                $filter->like('author', '文章作者');
+            });
+
             $grid->created_at('添加时间');
             // $grid->updated_at();
 
@@ -115,20 +124,24 @@ class SkbArticleController extends Controller
             // $form->display('id', 'ID');
 
             $form->select('cate_id', '所属分类')
-                ->options(SkbArticleCateModel::all()
-                    ->pluck('title', 'id'));
+                 ->options(SkbArticleCateModel::all()
+                 ->pluck('title', 'id'));
 
             $form->text('title', '文章标题');
             $form->text('author', '文章作者');
             $form->number('order', '文章排序');
 
-            $form->radio('is_top', '是否置顶')
-                 ->options(['1' => '是', '2'=> '否'])
-                 ->default('1');
+            $is_top = [
+                'on'  => ['value' => 1, 'text' => '是', 'color' => 'primary'],
+                'off' => ['value' => 2, 'text' => '否', 'color' => 'default'],
+            ];
+            $form->switch('is_top', '是否置顶')->states($is_top);
 
-            $form->radio('is_release', '是否发布')
-                ->options(['1' => '是', '2'=> '否'])
-                ->default('1');
+            $is_release = [
+                'on'  => ['value' => 1, 'text' => '是', 'color' => 'primary'],
+                'off' => ['value' => 2, 'text' => '否', 'color' => 'default'],
+            ];
+            $form->switch('is_release', '是否发布')->states($is_release);
 
             $form->textarea('content', '内容');
 
