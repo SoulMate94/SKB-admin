@@ -20,14 +20,12 @@
 
 use Encore\Admin\Grid;
 use Encore\Admin\Grid\Column;
-
 use App\Admin\Extensions\Column\ExpandRow;
 use App\Admin\Extensions\Column\OpenMap;
 use App\Admin\Extensions\Column\FloatBar;
 use App\Admin\Extensions\Column\Qrcode;
 use App\Admin\Extensions\Column\UrlWrapper;
 use Encore\Admin\Facades\Admin;
-
 
 Encore\Admin\Form::forget(['map', 'editor']);
 

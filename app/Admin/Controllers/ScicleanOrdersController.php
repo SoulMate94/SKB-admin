@@ -12,6 +12,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use App\Admin\Extensions\ExcelExporter;
 
 class ScicleanOrdersController extends Controller
 {
@@ -81,14 +82,11 @@ class ScicleanOrdersController extends Controller
             $grid->product_model('产品型号')->display(function ($product_model) {
                 return ScicleanPriceModel::find($product_model)->product_name;
             });
-
-
             $grid->consignee_name('收货人姓名')->color('green');
             $grid->consignee_tel('收货人手机号码')->prependIcon('phone');
             $grid->consignee_addr('收货人地址');
             $grid->sale_price('结算价')->sortable();
             $grid->sale_number('销售数量')->sortable();
-
             $grid->proxy_type('代理类型')->editable('select', [
                 1 => '个人代理',
                 2 => '代理商代理',
@@ -113,10 +111,10 @@ class ScicleanOrdersController extends Controller
 
             $grid->kuaidi_number('快递单号')->display(function ($kuaidi_number) {
                 return $kuaidi_number ?: '暂无快递单号';
-            });
+            })->editable();
             $grid->consignee_time('签收时间')->display(function ($consignee_time) {
                 return $consignee_time ?: '暂未签收';
-            });
+            })->editable();
             $grid->return_time('退货时间')->display(function ($return_time) {
                 return $return_time ?: '暂无退货时间';
             });
@@ -126,7 +124,12 @@ class ScicleanOrdersController extends Controller
             })->editable();
 
             $grid->created_at('订单创建时间')->sortable();
-            // $grid->updated_at();
+
+            $title = ['ID', '订单编号', '收货人姓名', '收货人电话', '收货地址', ];
+            $fields = ['id', 'order_number', 'consignee_name', 'consignee_tel', 'consignee_addr', ];
+            $grid->exporter(new ExcelExporter('订单列表', $title, $fields));
+
+            // $grid->exporter('custom-exporter');
 
             $grid->filter(function($filter){
 
@@ -201,9 +204,6 @@ class ScicleanOrdersController extends Controller
 
             $form->text('salesperson', '销售员姓名');
             $form->textarea('remarks', '备注');
-
-            // $form->display('created_at', '订单创建时间');
-            // $form->display('updated_at', 'Updated At');
         });
     }
 }
