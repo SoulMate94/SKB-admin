@@ -10,6 +10,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Support\Collection;
 
 
 class UsersController extends Controller
@@ -77,11 +78,13 @@ class UsersController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->name('姓名')->editable();
+            $grid->name('姓名')->label('primary');
 
             $grid->email('邮箱')->prependIcon('envelope');
 
             $grid->column('homepage')->urlWrapper();
+
+            $grid->disableExport(); 
 
 
             /*
@@ -111,17 +114,21 @@ class UsersController extends Controller
             $form->model()->makeVisible('password');
 
             $form->display('id', 'ID');
-
-            $form->text('name','姓名')->rules('required');
-            $form->email('email','邮箱')->rules('required');
+            $form->text('name','姓名')
+                 ->rules('required');
+            $form->email('email','邮箱')
+                 ->rules('required');
             $form->url('homepage');
-
-            $form->password('password', '密码')->rules('confirmed')->placeholder('请输入密码');
-            $form->password('password_confirmation', '确认密码')->placeholder('请确认密码');
-
+            $form->password('password', '密码')
+                 ->rules('confirmed|required')
+                 ->placeholder('请输入密码');
+            $form->password('password_confirmation', '确认密码')
+                 ->rules('required')
+                 ->placeholder('请确认密码');
             $form->display('created_at', '创建时间');
 
             $form->ignore(['password_confirmation']);
+
         });
     }
 }

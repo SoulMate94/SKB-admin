@@ -86,7 +86,8 @@ class ScicleanPriceController extends Controller
             $grid->remarks('备注');
 
             $grid->created_at('创建时间');
-            // $grid->updated_at();
+
+            $grid->disableExport();
         });
     }
 

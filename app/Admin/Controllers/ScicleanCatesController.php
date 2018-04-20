@@ -78,7 +78,8 @@ class ScicleanCatesController extends Controller
             $grid->cate_name('产品类别')->editable();
 
             $grid->created_at('添加时间');
-            // $grid->updated_at();
+
+            $grid->disableExport();
         });
     }
 

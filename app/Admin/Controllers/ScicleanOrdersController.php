@@ -125,11 +125,9 @@ class ScicleanOrdersController extends Controller
 
             $grid->created_at('订单创建时间')->sortable();
 
-            $title = ['ID', '订单编号', '收货人姓名', '收货人电话', '收货地址', ];
+            $title  = ['ID', '订单编号', '收货人姓名', '收货人电话', '收货地址', ];
             $fields = ['id', 'order_number', 'consignee_name', 'consignee_tel', 'consignee_addr', ];
             $grid->exporter(new ExcelExporter('订单列表', $title, $fields));
-
-            // $grid->exporter('custom-exporter');
 
             $grid->filter(function($filter){
 
