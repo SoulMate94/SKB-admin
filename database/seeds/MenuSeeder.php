@@ -59,13 +59,13 @@ class MenuSeeder extends Seeder
 
         // 水可邦--start
         $SKB = Menu::firstOrCreate([
-            'uri' => ''
+            'uri' => 'skb'
         ], [
             'parent_id' => 0,
             'order' => 17,
             'title' => '水可邦',
             'icon' => 'fa-bold',
-            'uri' => ''
+            'uri' => 'skb'
         ]);
 
         // 水可邦-文章管理
@@ -135,7 +135,6 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦-会员管理
-
         $VIP = Menu::firstOrCreate([
             'uri' => 'vip-users'
         ], [
@@ -146,8 +145,18 @@ class MenuSeeder extends Seeder
             'uri' => 'vip-users'
         ]);
 
-        // 水可邦-意见反馈
+        // 水可邦-服务类别
+        Menu::firstOrCreate([
+            'uri' => 'skb_service_cate'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 19,
+            'title' => '服务类别',
+            'icon' => 'fa-list-ul',
+            'uri' => 'skb_service_cate'
+        ]);
 
+        // 水可邦-意见反馈
         $Suggestions = Menu::firstOrCreate([
             'uri' => 'suggestions'
         ], [
@@ -157,5 +166,65 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-mail-reply-all',
             'uri' => 'suggestions'
         ]);
+
+        // 水可邦--end
+
+        // 售后服务系统--start
+
+        $after_sale = Menu::firstOrCreate([
+            'uri' => 'after_sale'
+        ], [
+            'parent_id' => 0,
+            'order' => 1,
+            'title' => '售后服务系统',
+            'icon'  => 'fa-ambulance',
+            'uri'   => 'after_sale'
+        ]);
+
+        // 售后-滤芯详情
+        Menu::firstOrCreate([
+            'uri' => 'skb_filter'
+        ], [
+            'parent_id' => $after_sale->id,
+            'order' => 2,
+            'title' => '滤芯列表',
+            'icon'  => 'fa-th-list',
+            'uri'   => 'skb_filter'
+        ]);
+
+        // 售后-滤芯等级
+        Menu::firstOrCreate([
+            'uri' => 'skb_filter_level'
+        ], [
+            'parent_id' => $after_sale->id,
+            'order' => 3,
+            'title' => '滤芯等级',
+            'icon'  => 'fa-level-down',
+            'uri'   => 'skb_filter_level'
+        ]);
+
+        // 售后-售后列表
+        Menu::firstOrCreate([
+            'uri' => 'after_sale_list'
+        ], [
+            'parent_id' => $after_sale->id,
+            'order' => 3,
+            'title' => '售后服务申请',
+            'icon'  => 'fa-retweet',
+            'uri'   => 'after_sale_list'
+        ]);
+
+        // 售后-滤芯安装记录
+        Menu::firstOrCreate([
+            'uri' => 'skb_filter_install'
+        ], [
+            'parent_id' => $after_sale->id,
+            'order' => 3,
+            'title' => '滤芯安装/更换记录',
+            'icon'  => 'fa-history',
+            'uri'   => 'skb_filter_install'
+        ]);
+
+        // 售后服务系统--end
     }
 }

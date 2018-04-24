@@ -106,7 +106,6 @@ class SkbArticleController extends Controller
             });
 
             $grid->created_at('添加时间');
-            // $grid->updated_at();
 
             $grid->disableExport();
         });

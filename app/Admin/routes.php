@@ -31,5 +31,15 @@ Route::group([
         'skb_ad' => SkbAdController::class,
         // 水可邦 银行卡管理
         'skb_bank_card' => SkbBankCardController::class,
+        // 水可邦 服务类别
+        'skb_service_cate' => SkbServiceCateController::class,
+        // 售后 滤芯列表
+        'skb_filter' => SkbFilterController::class,
+        // 售后 滤芯等级
+        'skb_filter_level' => SkbFilterLevelController::class,
+        // 售后 售后服务申请
+        'after_sale_list' => AfterSaleListController::class,
+        // 售后 滤芯安装记录
+        'skb_filter_install' => SkbFilterInstallController::class,
     ]);
 });
