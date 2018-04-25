@@ -15,9 +15,9 @@ class CreateSkbFilterInstallTable extends Migration
     {
         Schema::create('skb_filter_install', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('filter_id')->comment('滤芯ID');
-            $table->integer('user_id')->comment('用户ID');
-            $table->integer('master_id')->comment('师傅ID');
+            $table->string('filter_name')->comment('滤芯名称');
+            $table->string('user_name')->comment('用户名称');
+            $table->string('master_name')->comment('师傅名称');
             $table->timestamp('installed_at')->comment('安装时间');
             $table->timestamp('expired_at')->comment('更换时间')->nullable();
             $table->integer('expired_time')->comment('滤芯更换时间倒计时');

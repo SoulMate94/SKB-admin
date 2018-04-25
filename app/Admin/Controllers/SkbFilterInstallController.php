@@ -3,6 +3,7 @@
 namespace App\Admin\Controllers;
 
 use App\Models\SkbFilterInstallModel;
+use App\Models\SkbFilterModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -75,16 +76,17 @@ class SkbFilterInstallController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->filter_id('滤芯名称');
-            $grid->user_id('业主姓名');
-            $grid->master_id('师傅姓名');
+            $grid->filter_name('滤芯名称');
+            $grid->user_name('业主姓名');
+            $grid->master_name('师傅姓名');
 
-            $grid->instaled_at('安装时间');
+            $grid->installed_at('安装时间');
             $grid->expired_at('更换时间');
-            $grid->expired_time('更换倒计时')->sortable();
 
-            // $grid->created_at();
-            // $grid->updated_at();
+            $grid->expired_time('更换倒计时')->display(function ($expired_time) {
+                return $expired_time.'个月';
+            })->sortable();
+
 
             $grid->disableExport();
 
@@ -92,9 +94,9 @@ class SkbFilterInstallController extends Controller
 
                 $filter->disableIdFilter();
 
-                $filter->like('filter_id', '滤芯名称');
-                $filter->like('user_id', '业主姓名');
-                $filter->like('master_id', '师傅姓名');
+                $filter->like('filter_name', '滤芯名称');
+                $filter->like('user_name', '业主姓名');
+                $filter->like('master_name', '师傅姓名');
             });
 
         });
@@ -109,10 +111,16 @@ class SkbFilterInstallController extends Controller
     {
         return Admin::form(SkbFilterInstallModel::class, function (Form $form) {
 
-            $form->display('id', 'ID');
+            $form->text('filter_name', '滤芯名称');
+            $form->text('user_name', '业主姓名');
+            $form->text('master_name', '师傅姓名');
 
-            $form->display('created_at', 'Created At');
-            $form->display('updated_at', 'Updated At');
+            $form->datetime('installed_at', '安装时间');
+            $form->datetime('expired_at', '更换时间');
+
+            $form->number('expired_time', '滤芯寿命');
+
+
         });
     }
 }
