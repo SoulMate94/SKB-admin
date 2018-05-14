@@ -13,7 +13,6 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use App\Extensions\ClickRow;
 use App\Extensions\ExcelExporter;
 use App\Extensions\CustomExporter;
 use App\Models\Schedule\UpdateReplaceTime;
@@ -163,9 +162,9 @@ class AfterSaleListController extends Controller
             });
 
             // 点击查看详情
-            $grid->actions(function ($actions) {
-                $actions->append(new ClickRow($actions->getKey()));
-            });
+//            $grid->actions(function ($actions) {
+//                $actions->append(new ClickRow($actions->getKey()));
+//            });
 
             // 导出
             $title  = [

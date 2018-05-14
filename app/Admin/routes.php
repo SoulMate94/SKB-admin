@@ -53,19 +53,21 @@ Route::group([
 
         'skb_bank_card' => SkbBankCardController::class,
 
-        // 水可净 水质解决方案调查系统 by jizw
+        // 水可净 水质解决方案调查系统
 
-        'skj_solution_question' => SkjSolutionQuestionController::class,
+        'skj_solution_question' => SkjSolutionQuestionController::class,// by jizw
 
-        // 水可净 质量管理系统 by jizw
+        // 水可净 质量管理系统
 
-        'skj_manage_solution' => SkjManageSolutionController::class,
+        'skj_manage_solution' => SkjManageSolutionController::class,// by jizw
 
-        // 水可净 水质管理安装验收系统 by jizw
+        // 水可净 水质管理安装验收系统
 
-        'skj_install_and_accept' => SkjInstallAndAcceptController::class,
+        'skj_install_and_accept' => SkjInstallAndAcceptController::class,// by jizw
 
     ]);
     $router->get('/after_sale_list/{id}/show', 'AfterSaleListController@show');
-    $router->get('skj_manage_solution/{id}/show', 'SkjManageSolutionController@show');
+
+    $router->get('skj_manage_solution/{id}/show', 'SkjManageSolutionController@show');// by jizw
+
 });

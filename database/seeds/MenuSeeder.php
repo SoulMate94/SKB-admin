@@ -284,7 +284,7 @@ class MenuSeeder extends Seeder
         ]);
         // 用户管理--end
 
-        //水可净-调查系统--strat
+        //水可净-调查
 
         $AfterMarket = Menu::firstOrCreate(
             ['uri' =>'after_market '],[
@@ -318,7 +318,5 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-firefox',
             'uri' => 'skj_install_and_accept'
         ]);
-
-        //水可净-调查系统--end
     }
 }
