@@ -87,6 +87,8 @@ class SkbFilterInstallController extends Controller
                 return $expired_time.'个月';
             })->sortable();
 
+            // 分组显示
+            // $grid->model()->groupBy('user_name');
 
             $grid->disableExport();
 
@@ -118,7 +120,7 @@ class SkbFilterInstallController extends Controller
             $form->datetime('installed_at', '安装时间');
             $form->datetime('expired_at', '更换时间');
 
-            $form->number('expired_time', '滤芯寿命');
+            $form->number('expired_time', '滤芯寿命')->help('单位(月)');
 
 
         });

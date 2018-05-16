@@ -41,5 +41,15 @@ Route::group([
         'after_sale_list' => AfterSaleListController::class,
         // 售后 滤芯安装记录
         'skb_filter_install' => SkbFilterInstallController::class,
+
+        // 水可邦 用户管理
+        'skb_users' => SkbUsersController::class,
+
+        // 水可邦 地址管理
+        'skb_address' => SkbAddressController::class,
+
+        // 水可邦 净水器机型
+        'skb_clean_type' => SkbCleanTypeController::class,
     ]);
+    $router->get('/after_sale_list/{id}/show', 'AfterSaleListController@show');
 });

@@ -73,6 +73,16 @@ class ExampleController extends Controller
 
             $grid->id('ID')->sortable();
 
+            // 禁用批量删除
+            $grid->tools(function ($tools) {
+                $tools->batch(function ($batch) {
+                    $batch->disableDelete();
+                });
+            });
+
+            // 或者 简单粗暴 JS 控制
+            Admin::script('$(".grid-batch-0").parent().parent().hide()');
+
             $grid->created_at();
             $grid->updated_at();
         });

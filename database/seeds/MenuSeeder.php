@@ -112,6 +112,16 @@ class MenuSeeder extends Seeder
             'uri' => 'skb_ad'
         ]);
 
+        $SKB_address = Menu::firstOrCreate([
+            'uri' => 'skb_address'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 25,
+            'title' => '地址管理',
+            'icon'  => 'fa-map-marker',
+            'uri'  => 'skb_address'
+        ]);
+
         // 水可邦-银行卡管理
         Menu::firstOrCreate([
             'uri' => 'skb_bank_card'
@@ -125,13 +135,13 @@ class MenuSeeder extends Seeder
 
         // 水可邦-银行卡管理
         Menu::firstOrCreate([
-            'uri' => 'skb_present_record'
+            'uri' => 'skb_withdraw_log'
         ], [
             'parent_id' => $SKB->id,
             'order' => 22,
             'title' => '提现管理',
             'icon' => 'fa-dollar',
-            'uri' => 'skb_present_record'
+            'uri' => 'skb_withdraw_log'
         ]);
 
         // 水可邦-会员管理
@@ -166,6 +176,30 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-mail-reply-all',
             'uri' => 'suggestions'
         ]);
+
+        // 水可邦--用户端--start
+        $SkbUser = Menu::firstOrCreate([
+            'uri' => 'skb_user'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 99,
+            'title' => '用户端',
+            'icon'  => 'fa-user-md',
+            'uri'   => 'skb_user'
+        ]);
+        // 水可邦--用户端--end
+
+        // 水可邦--师傅端--start
+        $SkbMaster = Menu::firstOrCreate([
+            'uri' => 'skb_master'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 99,
+            'title' => '师傅端',
+            'icon'  => 'fa-user-secret',
+            'uri'   => 'skb_master'
+        ]);
+        // 水可邦--师傅端--end
 
         // 水可邦--end
 
@@ -225,6 +259,29 @@ class MenuSeeder extends Seeder
             'uri'   => 'skb_filter_install'
         ]);
 
+        // 净水器机型
+        Menu::firstOrCreate([
+            'uri' => 'skb_clean_type'
+        ], [
+            'parent_id' => $after_sale->id,
+            'order' => 5,
+            'title' => '净水器机型',
+            'icon'  => 'fa-glass',
+            'uri'   => 'skb_clean_type'
+        ]);
+
         // 售后服务系统--end
+
+        // 用户管理--start
+        Menu::firstOrCreate([
+            'uri' => 'skb_users'
+        ], [
+            'parent_id' => 0,
+            'order' => 98,
+            'title' => '水可邦用户管理',
+            'icon'  => 'fa-users',
+            'uri'   => 'skb_users'
+        ]);
+        // 用户管理--end
     }
 }

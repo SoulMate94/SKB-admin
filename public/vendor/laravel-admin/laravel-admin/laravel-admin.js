@@ -75,6 +75,16 @@ $(function () {
     });
 
     $('[data-toggle="popover"]').popover();
+
+    $(window).on('load', function(){
+        $('.sidebar-menu a').each(function(){
+            if(this.href === window.location.href){
+                $(this).parent().addClass('active')
+                    .closest('.treeview-menu').addClass('.menu-open')
+                    .closest('.treeview').addClass('active');
+            }
+        });
+    });
 });
 
 (function ($) {

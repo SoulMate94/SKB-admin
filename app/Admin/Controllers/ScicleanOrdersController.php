@@ -12,7 +12,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use App\Admin\Extensions\ExcelExporter;
+use App\Extensions\ExcelExporter;
 
 class ScicleanOrdersController extends Controller
 {

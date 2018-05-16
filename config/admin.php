@@ -129,7 +129,11 @@ return [
     /*
      * @see https://adminlte.io/docs/2.4/layout
      */
-    'skin' => 'skin-blue-light',
+    // 'skin' => 'skin-blue-light',
+    // 'skin' => 'skin-green-light',
+    // 'skin' => 'skin-purple-light',
+    // 'skin' => 'skin-red-light',
+    'skin' => 'skin-blue',
 
     /*
     |---------------------------------------------------------|
