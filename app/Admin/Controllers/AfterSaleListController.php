@@ -13,7 +13,6 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
-use App\Extensions\ClickRow;
 use App\Extensions\ExcelExporter;
 use App\Extensions\CustomExporter;
 use App\Models\Schedule\UpdateReplaceTime;
@@ -160,11 +159,6 @@ class AfterSaleListController extends Controller
                 $filter->like('apply_mobile', '用户手机号');
                 $filter->like('service_master_id', '师傅姓名');
                 $filter->like('remark', '备注');
-            });
-
-            // 点击查看详情
-            $grid->actions(function ($actions) {
-                $actions->append(new ClickRow($actions->getKey()));
             });
 
             // 导出

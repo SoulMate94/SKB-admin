@@ -283,5 +283,39 @@ class MenuSeeder extends Seeder
             'uri'   => 'skb_users'
         ]);
         // 用户管理--end
+
+        // 水可净-调查
+        $AfterMarket = Menu::firstOrCreate(
+            ['uri' =>'after_market '],[
+            'parent_id' =>$SKJ->id,
+            'order' => 99,
+            'title' => '水质管理系统',
+            'icon' => 'fa-send',
+            'uri' => 'after_market'
+        ]);
+        $SkjSolutionQuestion = Menu::firstOrCreate(
+            ['uri' =>'skj_solution_question '],[
+            'parent_id' =>$AfterMarket->id,
+            'order' => 99,
+            'title' => '水质解决方案调查表',
+            'icon' => 'fa-align-justify',
+            'uri' => 'skj_solution_question'
+        ]);
+        $SkjManageSolution = Menu::firstOrCreate(
+            ['uri' =>'skj_manage_solution '],[
+            'parent_id' =>$AfterMarket->id,
+            'order' => 99,
+            'title' => '水质管理解决方案',
+            'icon' => 'fa-balance-scale',
+            'uri' => 'skj_manage_solution'
+        ]);
+        $SkjInstallAndAccept = Menu::firstOrCreate(
+            ['uri' =>'skj_install_and_accept '],[
+            'parent_id' =>$AfterMarket->id,
+            'order' => 99,
+            'title' => '水质管理安装验收表',
+            'icon' => 'fa-firefox',
+            'uri' => 'skj_install_and_accept'
+        ]);
     }
 }
