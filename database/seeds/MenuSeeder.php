@@ -13,51 +13,93 @@ class MenuSeeder extends Seeder
     public function run()
     {
 
-        // 水可净--start
+        /////////////////水可净//////////////////
+
         $SKJ = Menu::firstOrCreate([
             'uri' => 'skj'
         ], [
-            'parent_id' => 0,
-            'order' => 13,
-            'title' => '水可净',
-            'icon' => 'fa-coffee',
-            'uri' => 'skj'
+            'parent_id' => 0, // 父级菜单ID
+            'order' => 13, // 排序 升序
+            'title' => '水可净', // 菜单名
+            'icon' => 'fa-coffee', // 图标，https://fontawesome.com/icons
+            'uri' => 'skj' // URI
         ]);
 
+        // 水可净-订单管理
         Menu::firstOrCreate([
             'uri' => 'sciclean-orders'
         ], [
-            'parent_id' => $SKJ->id, // 父级菜单ID
-            'order' => 14, // 排序 升序
-            'title' => '净水器订单管理', // 菜单名
-            'icon' => 'fa-shopping-bag', // 图标，https://fontawesome.com/icons
-            'uri' => 'sciclean-orders' // URI
+            'parent_id' => $SKJ->id,
+            'order' => 14,
+            'title' => '净水器订单管理',
+            'icon' => 'fa-shopping-bag',
+            'uri' => 'sciclean-orders'
         ]);
 
-        // 净水器产品价格
+        // 水可净-产品价格
         Menu::firstOrCreate([
             'uri' => 'skj-price'
         ], [
-            'parent_id' => $SKJ->id, // 父级菜单ID
-            'order' => 15, // 排序 升序
-            'title' => '净水器产品价格', // 菜单名
-            'icon' => 'fa-money', // 图标，https://fontawesome.com/icons
-            'uri' => 'skj-price' // URI
+            'parent_id' => $SKJ->id,
+            'order' => 15,
+            'title' => '净水器产品价格',
+            'icon' => 'fa-money',
+            'uri' => 'skj-price'
         ]);
 
-        // 净水器产品分类
+        // 水可净-产品分类
         Menu::firstOrCreate([
             'uri' => 'skj-cate'
         ], [
-            'parent_id' => $SKJ->id, // 父级菜单ID
-            'order' => 16, // 排序 升序
-            'title' => '净水器产品类别', // 菜单名
-            'icon' => 'fa-align-right', // 图标，https://fontawesome.com/icons
-            'uri' => 'skj-cate' // URI
+            'parent_id' => $SKJ->id,
+            'order' => 16,
+            'title' => '净水器产品类别',
+            'icon' => 'fa-align-right',
+            'uri' => 'skj-cate'
         ]);
-        // 水可净--end
 
-        // 水可邦--start
+        // 水可净-调查
+        $AfterMarket = Menu::firstOrCreate(
+            ['uri' =>'after_market '],[
+            'parent_id' =>$SKJ->id,
+            'order' => 99,
+            'title' => '水质管理系统',
+            'icon' => 'fa-send',
+            'uri' => 'after_market'
+        ]);
+        $SkjSolutionQuestion = Menu::firstOrCreate([
+            'uri' =>'skj_solution_question '
+        ],[
+            'parent_id' =>$AfterMarket->id,
+            'order' => 99,
+            'title' => '水质解决方案调查表',
+            'icon' => 'fa-align-justify',
+            'uri' => 'skj_solution_question'
+        ]);
+        $SkjManageSolution = Menu::firstOrCreate([
+            'uri' =>'skj_manage_solution '
+        ],[
+            'parent_id' =>$AfterMarket->id,
+            'order' => 99,
+            'title' => '水质管理解决方案',
+            'icon' => 'fa-balance-scale',
+            'uri' => 'skj_manage_solution'
+        ]);
+        $SkjInstallAndAccept = Menu::firstOrCreate([
+            'uri' =>'skj_install_and_accept '
+        ],[
+            'parent_id' =>$AfterMarket->id,
+            'order' => 99,
+            'title' => '水质管理安装验收表',
+            'icon' => 'fa-firefox',
+            'uri' => 'skj_install_and_accept'
+        ]);
+
+        ///////////////////////////////////////
+
+
+        /////////////////水可邦//////////////////
+
         $SKB = Menu::firstOrCreate([
             'uri' => 'skb'
         ], [
@@ -112,6 +154,7 @@ class MenuSeeder extends Seeder
             'uri' => 'skb_ad'
         ]);
 
+        // 水可邦-地址管理
         $SKB_address = Menu::firstOrCreate([
             'uri' => 'skb_address'
         ], [
@@ -142,17 +185,6 @@ class MenuSeeder extends Seeder
             'title' => '提现管理',
             'icon' => 'fa-dollar',
             'uri' => 'skb_withdraw_log'
-        ]);
-
-        // 水可邦-会员管理
-        $VIP = Menu::firstOrCreate([
-            'uri' => 'vip-users'
-        ], [
-            'parent_id' => 0,
-            'order' => 18,
-            'title' => '会员管理',
-            'icon' => 'fa-vimeo',
-            'uri' => 'vip-users'
         ]);
 
         // 水可邦-服务类别
@@ -201,10 +233,24 @@ class MenuSeeder extends Seeder
         ]);
         // 水可邦--师傅端--end
 
-        // 水可邦--end
+        // 用户管理--start
+        Menu::firstOrCreate([
+            'uri' => 'skb_users'
+        ], [
+            'parent_id' => 0,
+            'order' => 98,
+            'title' => '水可邦用户管理',
+            'icon'  => 'fa-users',
+            'uri'   => 'skb_users'
+        ]);
+        // 用户管理--end
+
+        ///////////////////////////////////////
+
+
+        /////////////////售后服务系统/////////////
 
         // 售后服务系统--start
-
         $after_sale = Menu::firstOrCreate([
             'uri' => 'after_sale'
         ], [
@@ -213,6 +259,17 @@ class MenuSeeder extends Seeder
             'title' => '售后服务系统',
             'icon'  => 'fa-ambulance',
             'uri'   => 'after_sale'
+        ]);
+
+        // 售后-净水器机型
+        Menu::firstOrCreate([
+            'uri' => 'skb_clean_type'
+        ], [
+            'parent_id' => $after_sale->id,
+            'order' => 5,
+            'title' => '净水器机型',
+            'icon'  => 'fa-glass',
+            'uri'   => 'skb_clean_type'
         ]);
 
         // 售后-滤芯详情
@@ -237,17 +294,6 @@ class MenuSeeder extends Seeder
             'uri'   => 'skb_filter_level'
         ]);
 
-        // 售后-售后列表
-        Menu::firstOrCreate([
-            'uri' => 'after_sale_list'
-        ], [
-            'parent_id' => $after_sale->id,
-            'order' => 3,
-            'title' => '售后服务申请',
-            'icon'  => 'fa-retweet',
-            'uri'   => 'after_sale_list'
-        ]);
-
         // 售后-滤芯安装记录
         Menu::firstOrCreate([
             'uri' => 'skb_filter_install'
@@ -259,63 +305,18 @@ class MenuSeeder extends Seeder
             'uri'   => 'skb_filter_install'
         ]);
 
-        // 净水器机型
+        // 售后-售后列表
         Menu::firstOrCreate([
-            'uri' => 'skb_clean_type'
+            'uri' => 'after_sale_list'
         ], [
             'parent_id' => $after_sale->id,
-            'order' => 5,
-            'title' => '净水器机型',
-            'icon'  => 'fa-glass',
-            'uri'   => 'skb_clean_type'
+            'order' => 3,
+            'title' => '售后服务申请',
+            'icon'  => 'fa-retweet',
+            'uri'   => 'after_sale_list'
         ]);
 
-        // 售后服务系统--end
+        ///////////////////////////////////////
 
-        // 用户管理--start
-        Menu::firstOrCreate([
-            'uri' => 'skb_users'
-        ], [
-            'parent_id' => 0,
-            'order' => 98,
-            'title' => '水可邦用户管理',
-            'icon'  => 'fa-users',
-            'uri'   => 'skb_users'
-        ]);
-        // 用户管理--end
-
-        // 水可净-调查
-        $AfterMarket = Menu::firstOrCreate(
-            ['uri' =>'after_market '],[
-            'parent_id' =>$SKJ->id,
-            'order' => 99,
-            'title' => '水质管理系统',
-            'icon' => 'fa-send',
-            'uri' => 'after_market'
-        ]);
-        $SkjSolutionQuestion = Menu::firstOrCreate(
-            ['uri' =>'skj_solution_question '],[
-            'parent_id' =>$AfterMarket->id,
-            'order' => 99,
-            'title' => '水质解决方案调查表',
-            'icon' => 'fa-align-justify',
-            'uri' => 'skj_solution_question'
-        ]);
-        $SkjManageSolution = Menu::firstOrCreate(
-            ['uri' =>'skj_manage_solution '],[
-            'parent_id' =>$AfterMarket->id,
-            'order' => 99,
-            'title' => '水质管理解决方案',
-            'icon' => 'fa-balance-scale',
-            'uri' => 'skj_manage_solution'
-        ]);
-        $SkjInstallAndAccept = Menu::firstOrCreate(
-            ['uri' =>'skj_install_and_accept '],[
-            'parent_id' =>$AfterMarket->id,
-            'order' => 99,
-            'title' => '水质管理安装验收表',
-            'icon' => 'fa-firefox',
-            'uri' => 'skj_install_and_accept'
-        ]);
     }
 }

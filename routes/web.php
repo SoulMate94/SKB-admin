@@ -12,9 +12,5 @@
 */
 
 Route::get('/', function () {
-<<<<<<< HEAD
-    return view('welcome');
-=======
     return redirect('/admin');
->>>>>>> 3b95f7998bd256e5a5b05666bf64d05981bf1779
 });
