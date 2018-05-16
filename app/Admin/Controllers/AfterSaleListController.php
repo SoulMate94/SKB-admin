@@ -161,11 +161,6 @@ class AfterSaleListController extends Controller
                 $filter->like('remark', '备注');
             });
 
-            // 点击查看详情
-//            $grid->actions(function ($actions) {
-//                $actions->append(new ClickRow($actions->getKey()));
-//            });
-
             // 导出
             $title  = [
                 'ID', '申请人', '手机号码', '地址', '售后类型', '服务类别', '净水器机型',

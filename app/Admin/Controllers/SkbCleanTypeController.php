@@ -76,7 +76,7 @@ class SkbCleanTypeController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->product_name('名称');
-            $grid->product_img('图片')->image();
+            $grid->product_img('图片')->image('', 100, 100);
             $grid->level_1('第一级');
             $grid->level_2('第二级');
             $grid->level_3('第三级');
