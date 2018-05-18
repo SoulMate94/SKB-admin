@@ -245,6 +245,29 @@ class MenuSeeder extends Seeder
         ]);
         // 用户管理--end
 
+
+        // 水可邦-区域管理-start
+        $SkbArea = Menu::firstOrCreate([
+            'uri' => 'skb_china'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 6,
+            'title'     => '区域管理',
+            'icon'      => 'fa-map-o',
+            'uri'       => 'skb_china'
+        ]);
+
+        Menu::firstOrCreate([
+            'uri' => 'skb_open_area'
+        ], [
+            'parent_id' => $SkbArea->id,
+            'order'     => 1,
+            'title'     => '开放区域设置',
+            'icon'      => 'fa-map',
+            'uri'       => 'skb_open_area'
+        ]);
+        // 水可邦-区域管理-end
+
         ///////////////////////////////////////
 
 

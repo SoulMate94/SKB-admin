@@ -43,6 +43,8 @@ Route::group([
         'suggestions' => SkbSuggestionsController::class,
         // 水可邦 用户管理
         'skb_users' => SkbUsersController::class,
+        // 水可邦 区域开放设置
+        'skb_open_area' => SkbOpenAreaController::class,
         ////////////////////////////////////////////////
 
         //////////////////水可邦用户端////////////////////
@@ -72,7 +74,10 @@ Route::group([
 
     ]);
 
-    $router->get('/after_sale_list/{id}/show', 'AfterSaleListController@show');
+    $router->get('after_sale_list/{id}/show', 'AfterSaleListController@show');
 
     $router->get('skj_manage_solution/{id}/show', 'SkjManageSolutionController@show');// by jizw
+
+    $router->get('skb/area/city', 'SkbOpenAreaController@city');
+    $router->get('skb/area/district', 'SkbOpenAreaController@district');
 });
