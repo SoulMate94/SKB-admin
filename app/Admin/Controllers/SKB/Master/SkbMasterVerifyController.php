@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Admin\Controllers\SKB\Master;
+
+use App\Models\SKB\Master\SkbMasterVerifyModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -9,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ExampleController extends Controller
+class SkbMasterVerifyController  extends Controller
 {
     use ModelForm;
 
@@ -69,19 +71,9 @@ class ExampleController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(YourModel::class, function (Grid $grid) {
+        return Admin::grid(Models::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-
-            // 禁用批量删除
-            $grid->tools(function ($tools) {
-                $tools->batch(function ($batch) {
-                    $batch->disableDelete();
-                });
-            });
-
-            // 或者 简单粗暴 JS 控制
-            Admin::script('$(".grid-batch-0").parent().parent().hide()');
 
             $grid->created_at();
             $grid->updated_at();
@@ -95,7 +87,7 @@ class ExampleController extends Controller
      */
     protected function form()
     {
-        return Admin::form(YourModel::class, function (Form $form) {
+        return Admin::form(Models::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
