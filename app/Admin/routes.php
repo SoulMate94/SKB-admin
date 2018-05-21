@@ -94,7 +94,7 @@ Route::group([
     $router->resources([
 
         // 水可邦 用户管理
-<<<<<<< HEAD
+
         'skb_users'                  => SkbUsersController::class,
 
 
@@ -108,44 +108,5 @@ Route::group([
     $router->get('skb/area/city', 'SKB\Common\SkbOpenAreaController@city');
 
     $router->get('skb/area/district', 'SKB\Common\SkbOpenAreaController@district');
-=======
-        'skb_users' => SkbUsersController::class,
-        // 水可邦 区域开放设置
-        'skb_open_area' => SkbOpenAreaController::class,
-        ////////////////////////////////////////////////
 
-        //////////////////水可邦用户端////////////////////
-        ////////////////////////////////////////////////
-
-
-        //////////////////水可邦师傅端///////////////////
-        // 水可邦 银行卡管理
-        'skb_bank_card' => SkbBankCardController::class,
-        // 水可邦 服务类别
-        'skb_service_cate' => SkbServiceCateController::class,
-        ///////////////////////////////////////////////
-
-
-        //////////////////售后服务系统////////////////////
-        // 水可邦 净水器机型
-        'skb_clean_type' => SkbCleanTypeController::class,
-        // 售后 滤芯列表
-        'skb_filter' => SkbFilterController::class,
-        // 售后 滤芯等级
-        'skb_filter_level' => SkbFilterLevelController::class,
-        // 售后 售后服务申请
-        'after_sale_list' => AfterSaleListController::class,
-        // 售后 滤芯安装记录
-        'skb_filter_install' => SkbFilterInstallController::class,
-        ////////////////////////////////////////////////
-
-    ]);
-
-    $router->get('after_sale_list/{id}/show', 'AfterSaleListController@show');
-
-    $router->get('skj_manage_solution/{id}/show', 'SkjManageSolutionController@show');// by jizw
-
-    $router->get('skb/area/city', 'SkbOpenAreaController@city');
-    $router->get('skb/area/district', 'SkbOpenAreaController@district');
->>>>>>> 6263e9654039e70ecbbf3ab1b836eeaaaf3fc0b0
 });
