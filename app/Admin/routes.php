@@ -107,4 +107,5 @@ Route::group([
     $router->get('skb/area/city', 'SKB\Common\SkbOpenAreaController@city');
 
     $router->get('skb/area/district', 'SKB\Common\SkbOpenAreaController@district');
+
 });
