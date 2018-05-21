@@ -134,7 +134,7 @@ return [
     // 'skin' => 'skin-green-light',
     // 'skin' => 'skin-purple-light',
     // 'skin' => 'skin-red-light',
-    'skin' => 'skin-green',
+    'skin' => 'skin-blue',
 
     /*
     |---------------------------------------------------------|

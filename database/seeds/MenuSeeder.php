@@ -27,35 +27,35 @@ class MenuSeeder extends Seeder
 
         // 水可净-订单管理
         Menu::firstOrCreate([
-            'uri' => 'sciclean-orders'
+            'uri' => 'skj_orders'
         ], [
             'parent_id' => $SKJ->id,
             'order' => 14,
             'title' => '净水器订单管理',
             'icon' => 'fa-shopping-bag',
-            'uri' => 'sciclean-orders'
+            'uri' => 'skj_orders'
         ]);
 
         // 水可净-产品价格
         Menu::firstOrCreate([
-            'uri' => 'skj-price'
+            'uri' => 'skj_price'
         ], [
             'parent_id' => $SKJ->id,
             'order' => 15,
             'title' => '净水器产品价格',
             'icon' => 'fa-money',
-            'uri' => 'skj-price'
+            'uri' => 'skj_price'
         ]);
 
         // 水可净-产品分类
         Menu::firstOrCreate([
-            'uri' => 'skj-cate'
+            'uri' => 'skj_cate'
         ], [
             'parent_id' => $SKJ->id,
             'order' => 16,
             'title' => '净水器产品类别',
             'icon' => 'fa-align-right',
-            'uri' => 'skj-cate'
+            'uri' => 'skj_cate'
         ]);
 
         // 水可净-调查
@@ -244,6 +244,29 @@ class MenuSeeder extends Seeder
             'uri'   => 'skb_users'
         ]);
         // 用户管理--end
+
+
+        // 水可邦-区域管理-start
+        $SkbArea = Menu::firstOrCreate([
+            'uri' => 'skb_china'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 6,
+            'title'     => '区域管理',
+            'icon'      => 'fa-map-o',
+            'uri'       => 'skb_china'
+        ]);
+
+        Menu::firstOrCreate([
+            'uri' => 'skb_open_area'
+        ], [
+            'parent_id' => $SkbArea->id,
+            'order'     => 1,
+            'title'     => '开放区域设置',
+            'icon'      => 'fa-map',
+            'uri'       => 'skb_open_area'
+        ]);
+        // 水可邦-区域管理-end
 
         ///////////////////////////////////////
 

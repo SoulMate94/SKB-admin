@@ -17,7 +17,10 @@ class CreateScicleanPriceTable extends Migration
             $table->increments('id');
             $table->integer('cate_id')->comment('所属分类ID');
             $table->string('product_name')->comment('产品名称');
+            $table->string('product_img')->comment('产品图片');
             $table->float('product_price')->comment('产品价格');
+            $table->float('install_price')->comment('建议安装价格');
+            $table->tinyInteger('is_del')->comment('是否删除')->default(0);
             $table->text('remarks')->comment('备注');
             $table->timestamps();
         });
