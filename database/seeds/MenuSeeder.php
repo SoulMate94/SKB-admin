@@ -15,7 +15,7 @@ class MenuSeeder extends Seeder
 
         /////////////////水可净//////////////////
 
-        $SKJ = Menu::firstOrCreate([
+        $SKJ                =   Menu::firstOrCreate([
             'uri' => 'skj'
         ], [
             'parent_id' => 0, // 父级菜单ID
@@ -59,7 +59,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可净-调查
-        $AfterMarket = Menu::firstOrCreate(
+        $AfterMarket            = Menu::firstOrCreate(
             ['uri' =>'after_market '],[
             'parent_id' =>$SKJ->id,
             'order' => 99,
@@ -67,7 +67,7 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-send',
             'uri' => 'after_market'
         ]);
-        $SkjSolutionQuestion = Menu::firstOrCreate([
+        $SkjSolutionQuestion    = Menu::firstOrCreate([
             'uri' =>'skj_solution_question '
         ],[
             'parent_id' =>$AfterMarket->id,
@@ -76,7 +76,7 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-align-justify',
             'uri' => 'skj_solution_question'
         ]);
-        $SkjManageSolution = Menu::firstOrCreate([
+        $SkjManageSolution      = Menu::firstOrCreate([
             'uri' =>'skj_manage_solution '
         ],[
             'parent_id' =>$AfterMarket->id,
@@ -85,7 +85,7 @@ class MenuSeeder extends Seeder
             'icon' => 'fa-balance-scale',
             'uri' => 'skj_manage_solution'
         ]);
-        $SkjInstallAndAccept = Menu::firstOrCreate([
+        $SkjInstallAndAccept    = Menu::firstOrCreate([
             'uri' =>'skj_install_and_accept '
         ],[
             'parent_id' =>$AfterMarket->id,
@@ -100,7 +100,7 @@ class MenuSeeder extends Seeder
 
         /////////////////水可邦//////////////////
 
-        $SKB = Menu::firstOrCreate([
+        $SKB                =   Menu::firstOrCreate([
             'uri' => 'skb'
         ], [
             'parent_id' => 0,
@@ -111,7 +111,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦-文章管理
-        $SKB_article = Menu::firstOrCreate([
+        $SKB_article        =   Menu::firstOrCreate([
             'uri' => 'skb-article'
         ], [
             'parent_id' => $SKB->id,
@@ -144,7 +144,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦-广告管理
-        $SKB_ad = Menu::firstOrCreate([
+        $SKB_ad             =   Menu::firstOrCreate([
             'uri' => 'skb_ad'
         ], [
             'parent_id' => $SKB->id,
@@ -155,7 +155,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦-地址管理
-        $SKB_address = Menu::firstOrCreate([
+        $SKB_address        =   Menu::firstOrCreate([
             'uri' => 'skb_address'
         ], [
             'parent_id' => $SKB->id,
@@ -199,7 +199,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦-意见反馈
-        $Suggestions = Menu::firstOrCreate([
+        $Suggestions        =   Menu::firstOrCreate([
             'uri' => 'suggestions'
         ], [
             'parent_id' => 0,
@@ -210,7 +210,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦--用户端--start
-        $SkbUser = Menu::firstOrCreate([
+        $SkbUser            =   Menu::firstOrCreate([
             'uri' => 'skb_user'
         ], [
             'parent_id' => $SKB->id,
@@ -222,7 +222,7 @@ class MenuSeeder extends Seeder
         // 水可邦--用户端--end
 
         // 水可邦--师傅端--start
-        $SkbMaster = Menu::firstOrCreate([
+        $SkbMaster          =   Menu::firstOrCreate([
             'uri' => 'skb_master'
         ], [
             'parent_id' => $SKB->id,
@@ -230,6 +230,17 @@ class MenuSeeder extends Seeder
             'title' => '师傅端',
             'icon'  => 'fa-user-secret',
             'uri'   => 'skb_master'
+        ]);
+
+        // 水可邦--师傅认证 byjizw
+        $SkbMasterVerify    =   Menu::firstOrCreate([
+            'uri'   =>  'skb_master_verify'
+        ],[
+            'parent_id' =>  $SKB->id,
+            'order'     =>  99,
+            'title'     =>  '师傅认证',
+            'icon'      =>  'fa-wrench',
+            'uri'       =>  'skb_master_verify'
         ]);
         // 水可邦--师傅端--end
 
@@ -247,7 +258,7 @@ class MenuSeeder extends Seeder
 
 
         // 水可邦-区域管理-start
-        $SkbArea = Menu::firstOrCreate([
+        $SkbArea            = Menu::firstOrCreate([
             'uri' => 'skb_china'
         ], [
             'parent_id' => $SKB->id,
@@ -274,7 +285,7 @@ class MenuSeeder extends Seeder
         /////////////////售后服务系统/////////////
 
         // 售后服务系统--start
-        $after_sale = Menu::firstOrCreate([
+        $after_sale         = Menu::firstOrCreate([
             'uri' => 'after_sale'
         ], [
             'parent_id' => 0,
