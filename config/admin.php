@@ -42,7 +42,7 @@ return [
     /*
      * Use `https`.
      */
-    'secure' => true,
+    'secure' => false,
 
     /*
      * Laravel-admin auth setting.
@@ -134,7 +134,7 @@ return [
     // 'skin' => 'skin-green-light',
     // 'skin' => 'skin-purple-light',
     // 'skin' => 'skin-red-light',
-    'skin' => 'skin-blue',
+    'skin' => 'skin-green',
 
     /*
     |---------------------------------------------------------|

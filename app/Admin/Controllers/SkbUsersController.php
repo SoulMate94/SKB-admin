@@ -78,7 +78,7 @@ class SkbUsersController extends Controller
             $grid->username('用户名');
             $grid->openid('微信ID');
             $grid->nickname('微信昵称');
-            $grid->avatar('微信头像')->image('', 100, 100);
+            $grid->avatar('微信头像')->image('', 132, 132);
             $grid->mobile('手机号码');
             $grid->role('角色')->display(function ($role) {
                 if ($role === 1) {
@@ -116,6 +116,7 @@ class SkbUsersController extends Controller
 
             $form->display('id', 'ID');
 
+            $form->display('uid', 'ID');
             $form->text('username', '用户名');
             $form->text('nickname', '微信昵称');
             $form->image('avatar', '微信头像');
