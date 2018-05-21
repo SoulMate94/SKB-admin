@@ -24,7 +24,7 @@ class SkjSolutionQuestionController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('header');
+            $content->header('水质解决方案调查');
             $content->description('description');
 
             $content->body($this->grid());

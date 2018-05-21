@@ -24,7 +24,7 @@ class SkbAdController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('水可邦广告管理');
+            $content->header('广告管理');
             $content->description('description');
 
             $content->body($this->grid());
@@ -86,11 +86,19 @@ class SkbAdController extends Controller
             $grid->ad_explain('广告说明')->display(function ($ad_explain) {
                 return $ad_explain ?: '暂无说明';
             })->limit(30)->label('default');
-
             $grid->order('排序')->sortable()->editable();
 
             $grid->created_at('创建时间');
-            // $grid->updated_at();
+
+            $grid->disableExport();
+
+            $grid->filter(function ($filter) {
+
+                $filter->disableIdFilter();
+
+                $filter->like('title', '广告标题');
+                $filter->like('ad_explain', '广告说明');
+            });
         });
     }
 

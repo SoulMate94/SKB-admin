@@ -75,11 +75,11 @@ class SkbUsersController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->username('用户名');
-            $grid->openid('微信ID');
+            $grid->username('用户名')->prependIcon('user');
+            $grid->openid('微信ID')->prependIcon('wechat');
             $grid->nickname('微信昵称');
             $grid->avatar('微信头像')->image('', 132, 132);
-            $grid->mobile('手机号码');
+            $grid->mobile('手机号码')->prependIcon('phone');
             $grid->role('角色')->display(function ($role) {
                 if ($role === 1) {
                     return '用户';
@@ -88,7 +88,7 @@ class SkbUsersController extends Controller
                 } else {
                     return '用户&师傅';
                 }
-            });
+            })->prependIcon('group');
 
             $grid->created_at('创建时间');
 
@@ -113,8 +113,6 @@ class SkbUsersController extends Controller
     protected function form()
     {
         return Admin::form(SkbUsersModel::class, function (Form $form) {
-
-            $form->display('id', 'ID');
 
             $form->text('username', '用户名');
             $form->text('nickname', '微信昵称');

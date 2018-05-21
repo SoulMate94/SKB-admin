@@ -115,7 +115,6 @@ class SkbOpenAreaController extends Controller
 
                 $filter->equal('district', '区')->select();
 
-                $filter->like('street', '街道');
             });
 
         });

@@ -77,9 +77,9 @@ class SkbArticleController extends Controller
             $grid->id('ID')->sortable();
             $grid->cate_id('所属分类')->display(function ($cate_id) {
                 return SkbArticleCateModel::find($cate_id)->title;
-            });
+            })->label('primary');
             $grid->title('文章标题')->editable();
-            $grid->content('文章内容')->limit(30);
+            $grid->content('文章内容')->limit(15);
             $grid->author('文章作者');
 
             $is_top = [

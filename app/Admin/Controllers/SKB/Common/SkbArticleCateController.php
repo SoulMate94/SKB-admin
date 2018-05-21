@@ -75,22 +75,21 @@ class SkbArticleCateController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->title('分类名称');
+            $grid->title('分类名称')->editable();
             $grid->pid('上级分类')->display(function ($pid) {
                 return $pid > 0
                 ? SkbArticleCateModel::find($pid)->title
                 : '顶级分类';
-            });
+            })->label('primary');
             $grid->order('分类排序')->editable()->sortable();
 
             $grid->created_at('创建时间');
-            // $grid->updated_at();
 
             $grid->filter(function ($filter) {
-                // 去掉默认的id过滤器
-                $filter->disableIdFilter();
 
+                $filter->disableIdFilter();
                 $filter->like('title', '分类名称');
+
             });
 
             $grid->disableExport();
@@ -106,17 +105,13 @@ class SkbArticleCateController extends Controller
     {
         return Admin::form(SkbArticleCateModel::class, function (Form $form) {
 
-            $form->display('id', 'ID');
-
             $form->select('pid', '上级分类')
                  ->options(SkbArticleCateModel::all()
-                 ->pluck('title', 'id'));
+                 ->pluck('title', 'id'))->help('不填代表顶级分类');
             $form->text('title', '分类名称');
             $form->number('order', '排序')->default(99);
             $form->textarea('remark', '备注');
 
-            // $form->display('created_at', 'Created At');
-            // $form->display('updated_at', 'Updated At');
         });
     }
 }

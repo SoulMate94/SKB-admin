@@ -80,6 +80,7 @@ class ScicleanCatesController extends Controller
             $grid->created_at('添加时间');
 
             $grid->disableExport();
+            $grid->disableFilter();
         });
     }
 

@@ -75,25 +75,29 @@ class SkbCleanTypeController extends Controller
         return Admin::grid(SkbCleanTypeModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-            $grid->product_name('名称');
+            $grid->product_name('名称')->label('primary');
             $grid->product_img('图片')->image('', 100, 100);
-            $grid->level_1('第一级');
-            $grid->level_2('第二级');
-            $grid->level_3('第三级');
-            $grid->level_4('第四级');
-            $grid->level_5('第五级');
+            $grid->level_1('第一级')->label('success');
+            $grid->level_2('第二级')->label('warning');
+            $grid->level_3('第三级')->label('primary');
+            $grid->level_4('第四级')->label('info');
+            $grid->level_5('第五级')->label('danger');
 
             $grid->created_at('添加时间');
 
             $grid->disableExport();
 
             $grid->filter(function ($filter) {
+
+                $filter->disableIDFilter();
+
                 $filter->like('product_name', '名称');
                 $filter->like('level_1', '第一级');
                 $filter->like('level_2', '第二级');
                 $filter->like('level_3', '第三级');
                 $filter->like('level_4', '第四级');
                 $filter->like('level_5', '第五级');
+
             });
         });
     }
@@ -113,7 +117,8 @@ class SkbCleanTypeController extends Controller
             $form->select('level_1', '第一级')
                  ->options(SkbFilterModel::all()
                  ->where('level_id', 1)
-                 ->pluck('filter_name', 'filter_name'));
+                 ->pluck('filter_name', 'filter_name'))
+                 ->help('查询不到? 先到滤芯列表录入');
 
             $form->select('level_2', '第二级')
                  ->options(SkbFilterModel::all()

@@ -74,7 +74,8 @@ class SkbFilterLevelController extends Controller
         return Admin::grid(SkbFilterLevelModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
-            $grid->title('滤芯级数');
+
+            $grid->title('滤芯级数')->label('primary');
 
             $grid->created_at('添加时间');
 

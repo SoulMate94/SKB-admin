@@ -77,9 +77,9 @@ class SkbFilterController extends Controller
             $grid->id('ID')->sortable();
             $grid->level_id('滤芯级数')->display(function ($level_id) {
                 return SkbFilterLevelModel::find($level_id)->title;
-            });
-            $grid->filter_name('滤芯名称');
-            $grid->filter_model('产品型号');
+            })->label('success');
+            $grid->filter_name('滤芯名称')->label('primary');
+            $grid->filter_model('产品型号')->label('info');
             $grid->filter_life('滤芯寿命')->display(function($filter_life) {
                 return $filter_life.'个月';
             })->sortable();
@@ -110,11 +110,13 @@ class SkbFilterController extends Controller
 
             $form->select('level_id', '滤芯级数')
                  ->options(SkbFilterLevelModel::all()
-                 ->pluck('title', 'id'));
+                 ->pluck('title', 'id'))
+                 ->help('查询不到? 请到滤芯等级录入');
 
             $form->text('filter_name', '滤芯名称');
             $form->text('filter_model', '滤芯品名');
-            $form->number('filter_life', '滤芯寿命');
+            $form->number('filter_life', '滤芯寿命')
+                 ->help('单位(月)');
 
         });
     }

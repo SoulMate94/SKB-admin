@@ -75,11 +75,10 @@ class SkbAddressController extends Controller
 
             $grid->id('ID')->sortable();
 
-            // $grid->uid('用户ID');
-            $grid->area('地址区域');
-            $grid->addr('详细地址');
-            $grid->contacts('联系人');
-            $grid->contacts_mobile('联系人手机号');
+            $grid->area('地址区域')->label('primary');
+            $grid->addr('详细地址')->label('info');
+            $grid->contacts('联系人')->prependIcon('user');
+            $grid->contacts_mobile('联系人手机号')->prependIcon('phone');
 
             $grid->tag('标签')->display(function ($tag) {
                 if ($tag === 1) {

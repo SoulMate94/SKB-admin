@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers\AfterSale;
 
 use App\Models\AfterSale\SkbFilterInstallModel;
-use App\Models\AfterSale\SkbFilterModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -76,16 +75,16 @@ class SkbFilterInstallController extends Controller
 
             $grid->id('ID')->sortable();
 
-            $grid->filter_name('滤芯名称');
-            $grid->user_name('业主姓名');
-            $grid->master_name('师傅姓名');
+            $grid->filter_name('滤芯名称')->label('primary');
+            $grid->user_name('业主姓名')->prependIcon('user');
+            $grid->master_name('师傅姓名')->prependIcon('user-secret');
 
-            $grid->installed_at('安装时间');
-            $grid->expired_at('更换时间');
+            $grid->installed_at('安装时间')->label('info');
+            $grid->expired_at('更换时间')->label('danger');
 
             $grid->expired_time('更换倒计时')->display(function ($expired_time) {
                 return $expired_time.'个月';
-            })->sortable();
+            })->label('default')->sortable();
 
             // 分组显示
             // $grid->model()->groupBy('user_name');
