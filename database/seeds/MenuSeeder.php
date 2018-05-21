@@ -27,35 +27,35 @@ class MenuSeeder extends Seeder
 
         // 水可净-订单管理
         Menu::firstOrCreate([
-            'uri' => 'sciclean-orders'
+            'uri' => 'skj_orders'
         ], [
             'parent_id' => $SKJ->id,
             'order' => 14,
             'title' => '净水器订单管理',
             'icon' => 'fa-shopping-bag',
-            'uri' => 'sciclean-orders'
+            'uri' => 'skj_orders'
         ]);
 
         // 水可净-产品价格
         Menu::firstOrCreate([
-            'uri' => 'skj-price'
+            'uri' => 'skj_price'
         ], [
             'parent_id' => $SKJ->id,
             'order' => 15,
             'title' => '净水器产品价格',
             'icon' => 'fa-money',
-            'uri' => 'skj-price'
+            'uri' => 'skj_price'
         ]);
 
         // 水可净-产品分类
         Menu::firstOrCreate([
-            'uri' => 'skj-cate'
+            'uri' => 'skj_cate'
         ], [
             'parent_id' => $SKJ->id,
             'order' => 16,
             'title' => '净水器产品类别',
             'icon' => 'fa-align-right',
-            'uri' => 'skj-cate'
+            'uri' => 'skj_cate'
         ]);
 
         // 水可净-调查

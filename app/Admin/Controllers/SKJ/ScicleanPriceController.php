@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Admin\Controllers\SKJ;
 
-use App\Models\SkbUsersModel;
+use App\Models\SKJ\ScicleanPriceModel;
+use App\Models\SKJ\ScicleanCatesModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +12,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class SkbUsersController extends Controller
+class ScicleanPriceController extends Controller
 {
     use ModelForm;
 
@@ -24,7 +25,7 @@ class SkbUsersController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('用户管理');
+            $content->header('净水器产品价格');
             $content->description('description');
 
             $content->body($this->grid());
@@ -71,25 +72,24 @@ class SkbUsersController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(SkbUsersModel::class, function (Grid $grid) {
+        return Admin::grid(ScicleanPriceModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->username('用户名');
-            $grid->openid('微信ID');
-            $grid->nickname('微信昵称');
-            $grid->avatar('微信头像')->image('', 132, 132);
-            $grid->mobile('手机号码');
-            $grid->role('角色')->display(function ($role) {
-                if ($role === 1) {
-                    return '用户';
-                } elseif ($role === 2) {
-                    return '师傅';
-                } else {
-                    return '用户&师傅';
-                }
-            });
+            // 产品类别
+            $grid->cate_id('所属分类')->display(function ($cateId) {
+                return ScicleanCatesModel::find($cateId)->cate_name;
+            })->label('success');
 
+            $grid->product_name('产品型号')->label('primary');
+            $grid->product_img('产品图片')->image('', 100, 100);
+            $grid->product_price('产品零售价(含安装)')->display(function ($product_price) {
+                return $product_price.'元';
+            })->label('info');
+            $grid->install_price('建议安装价格')->display(function ($install_price) {
+                return $install_price.'元';
+            })->label('default');
+            $grid->remarks('备注')->limit(10);
             $grid->created_at('创建时间');
 
             $grid->disableExport();
@@ -97,10 +97,8 @@ class SkbUsersController extends Controller
             $grid->filter(function ($filter) {
 
                 $filter->disableIDFilter();
-                $filter->like('username', '用户名');
-                $filter->like('nickname', '微信昵称');
-                $filter->like('mobile', '手机号');
 
+                $filter->like('product_name', '产品型号');
             });
         });
     }
@@ -112,19 +110,19 @@ class SkbUsersController extends Controller
      */
     protected function form()
     {
-        return Admin::form(SkbUsersModel::class, function (Form $form) {
+        return Admin::form(ScicleanPriceModel::class, function (Form $form) {
 
-            $form->display('id', 'ID');
+            $form->select('cate_id', '所属分类')
+                 ->options(ScicleanCatesModel::all()
+                 ->pluck('cate_name','id'));
 
-            $form->text('username', '用户名');
-            $form->text('nickname', '微信昵称');
-            $form->image('avatar', '微信头像');
-            $form->radio('role', '角色')
-                 ->options([
-                     '1' => '用户',
-                     '2' => '师傅',
-                     '3' => '用户&师傅'
-                 ])->default('1');
+            $form->text('product_name', '产品品名');
+            $form->image('product_img', '产品图片');
+            $form->currency('product_price', '产品价格')->symbol('￥');
+            $form->currency('install_price', '建议安装价格')
+                 ->symbol('￥')
+                 ->help('价格仅供参考');
+            $form->textarea('remarks', '备注');
 
             // $form->display('created_at', 'Created At');
             // $form->display('updated_at', 'Updated At');

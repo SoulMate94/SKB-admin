@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Admin\Controllers;
+namespace App\Admin\Controllers\SKB\Common;
 
-use App\Models\SkbUsersModel;
+use App\Models\SKB\Common\SkbArticleCateModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class SkbUsersController extends Controller
+class SkbArticleCateController extends Controller
 {
     use ModelForm;
 
@@ -24,7 +24,7 @@ class SkbUsersController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('用户管理');
+            $content->header('水可邦文章分类');
             $content->description('description');
 
             $content->body($this->grid());
@@ -71,37 +71,29 @@ class SkbUsersController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(SkbUsersModel::class, function (Grid $grid) {
+        return Admin::grid(SkbArticleCateModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->username('用户名');
-            $grid->openid('微信ID');
-            $grid->nickname('微信昵称');
-            $grid->avatar('微信头像')->image('', 132, 132);
-            $grid->mobile('手机号码');
-            $grid->role('角色')->display(function ($role) {
-                if ($role === 1) {
-                    return '用户';
-                } elseif ($role === 2) {
-                    return '师傅';
-                } else {
-                    return '用户&师傅';
-                }
+            $grid->title('分类名称');
+            $grid->pid('上级分类')->display(function ($pid) {
+                return $pid > 0
+                ? SkbArticleCateModel::find($pid)->title
+                : '顶级分类';
             });
+            $grid->order('分类排序')->editable()->sortable();
 
             $grid->created_at('创建时间');
-
-            $grid->disableExport();
+            // $grid->updated_at();
 
             $grid->filter(function ($filter) {
+                // 去掉默认的id过滤器
+                $filter->disableIdFilter();
 
-                $filter->disableIDFilter();
-                $filter->like('username', '用户名');
-                $filter->like('nickname', '微信昵称');
-                $filter->like('mobile', '手机号');
-
+                $filter->like('title', '分类名称');
             });
+
+            $grid->disableExport();
         });
     }
 
@@ -112,19 +104,16 @@ class SkbUsersController extends Controller
      */
     protected function form()
     {
-        return Admin::form(SkbUsersModel::class, function (Form $form) {
+        return Admin::form(SkbArticleCateModel::class, function (Form $form) {
 
             $form->display('id', 'ID');
 
-            $form->text('username', '用户名');
-            $form->text('nickname', '微信昵称');
-            $form->image('avatar', '微信头像');
-            $form->radio('role', '角色')
-                 ->options([
-                     '1' => '用户',
-                     '2' => '师傅',
-                     '3' => '用户&师傅'
-                 ])->default('1');
+            $form->select('pid', '上级分类')
+                 ->options(SkbArticleCateModel::all()
+                 ->pluck('title', 'id'));
+            $form->text('title', '分类名称');
+            $form->number('order', '排序')->default(99);
+            $form->textarea('remark', '备注');
 
             // $form->display('created_at', 'Created At');
             // $form->display('updated_at', 'Updated At');
