@@ -116,7 +116,6 @@ class SkjManageSolutionController extends Controller
     {
         return Admin::form(SkjManageSolutionModel::class, function (Form $form) {
 
-//            $form->display('id', 'ID');
             $form->number('tds','TDS值');
             $form->number('ph','PH值');
             $form->text('water_quality','水质情况');
@@ -149,9 +148,6 @@ class SkjManageSolutionController extends Controller
                 $form->install_time=strtotime($form->install_time);
             });
 
-
-//            $form->display('created_at', 'Created At');
-//            $form->display('updated_at', 'Updated At');
         });
     }
 

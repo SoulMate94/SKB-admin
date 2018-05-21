@@ -76,6 +76,12 @@ class SkbServiceCateController extends Controller
             $grid->id('ID')->sortable();
             $grid->title('服务类别名称')->editable();
 
+            $is_active = [
+                'on'  => ['value' => 1, 'text' => '激活', 'color' => 'primary'],
+                'off' => ['value' => 0, 'text' => '关闭', 'color' => 'default'],
+            ];
+            $grid->is_active('是否激活')->switch($is_active);
+
             $grid->created_at('添加时间');
 
             $grid->disableExport();
@@ -93,6 +99,14 @@ class SkbServiceCateController extends Controller
         return Admin::form(SkbServiceCateModel::class, function (Form $form) {
 
             $form->text('title', '服务类别名称');
+
+            $is_active = [
+                'on'  => ['value' => 1, 'text' => '激活', 'color' => 'primary'],
+                'off' => ['value' => 0, 'text' => '关闭', 'color' => 'default'],
+            ];
+
+            $form->switch('is_active', '是否激活')->states($is_active)->default('1');
+
 
         });
     }

@@ -124,8 +124,6 @@ class ScicleanPriceController extends Controller
                  ->help('价格仅供参考');
             $form->textarea('remarks', '备注');
 
-            // $form->display('created_at', 'Created At');
-            // $form->display('updated_at', 'Updated At');
         });
     }
 }

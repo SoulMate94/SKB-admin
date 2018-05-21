@@ -15,6 +15,7 @@ class CreateSkbServiceCateTable extends Migration
     {
         Schema::create('skb_service_cate', function (Blueprint $table) {
             $table->increments('id');
+            $table->tinyInteger('is_active')->default(1)->comment('是否激活,1表示激活');
             $table->string('title')->comment('服务类别名称');
             $table->timestamps();
         });

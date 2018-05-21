@@ -120,8 +120,6 @@ class SkbArticleController extends Controller
     {
         return Admin::form(SkbArticleModel::class, function (Form $form) {
 
-            // $form->display('id', 'ID');
-
             $form->select('cate_id', '所属分类')
                  ->options(SkbArticleCateModel::all()
                  ->pluck('title', 'id'));

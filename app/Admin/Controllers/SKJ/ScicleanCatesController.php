@@ -93,12 +93,8 @@ class ScicleanCatesController extends Controller
     {
         return Admin::form(ScicleanCatesModel::class, function (Form $form) {
 
-            // $form->display('id', 'ID');
-
             $form->text('cate_name', '产品类别');
 
-            // $form->display('created_at', 'Created At');
-            // $form->display('updated_at', 'Updated At');
         });
     }
 }

@@ -124,8 +124,6 @@ class SkbUsersController extends Controller
                      '3' => '用户&师傅'
                  ])->default('1');
 
-            // $form->display('created_at', 'Created At');
-            // $form->display('updated_at', 'Updated At');
         });
     }
 }
