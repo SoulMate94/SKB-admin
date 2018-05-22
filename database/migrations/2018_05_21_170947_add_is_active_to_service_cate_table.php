@@ -26,7 +26,7 @@ class AddIsActiveToServiceCateTable extends Migration
     public function down()
     {
         Schema::table('skb_service_cate', function (Blueprint $table) {
-            //
+            $table->dropColumn('is_active');
         });
     }
 }

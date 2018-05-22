@@ -268,6 +268,18 @@ class MenuSeeder extends Seeder
         ]);
         // 水可邦-区域管理-end
 
+        // 水可邦-订单管理-start
+        $SkbOrder = Menu::firstOrCreate([
+            'uri' => 'skb_order'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 1,
+            'title'     => '订单管理',
+            'icon'      => 'fa-shopping-bag',
+            'uri'       => 'skb_order'
+        ]);
+        // 水可邦-订单管理-end
+
         ///////////////////////////////////////
 
 
