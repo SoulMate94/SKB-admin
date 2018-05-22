@@ -77,13 +77,14 @@ class SkbArticleController extends Controller
             $grid->id('ID')->sortable();
             $grid->cate_id('所属分类')->display(function ($cate_id) {
                 return SkbArticleCateModel::find($cate_id)->title;
-            })->label('primary');
+            })->label('info');
             $grid->title('文章标题')->editable();
+            $grid->picture('文章图片')->image('', 100, 100);
             $grid->content('文章内容')->limit(15);
-            $grid->author('文章作者');
+            $grid->author('文章作者')->prependIcon('user-secret');
 
             $is_top = [
-                'on'  => ['value' => 1, 'text' => '已置顶', 'color' => 'primary'],
+                'on'  => ['value' => 1, 'text' => '已置顶', 'color' => 'success'],
                 'off' => ['value' => 2, 'text' => '未置顶', 'color' => 'default'],
             ];
             $grid->is_top('是否置顶')->switch($is_top);
@@ -126,6 +127,8 @@ class SkbArticleController extends Controller
 
             $form->text('title', '文章标题');
             $form->text('author', '文章作者');
+            $form->image('picture', '文章图片');
+            $form->textarea('content', '内容');
             $form->number('order', '文章排序');
 
             $is_top = [
@@ -139,8 +142,6 @@ class SkbArticleController extends Controller
                 'off' => ['value' => 2, 'text' => '否', 'color' => 'default'],
             ];
             $form->switch('is_release', '是否发布')->states($is_release);
-
-            $form->textarea('content', '内容');
 
         });
     }

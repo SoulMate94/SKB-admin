@@ -116,14 +116,13 @@ class SkbUsersController extends Controller
 
             $form->text('username', '用户名');
             $form->text('nickname', '微信昵称');
-            $form->image('avatar', '微信头像');
+            $form->image('avatar', '微信头像')->uniqueName();
             $form->radio('role', '角色')
                  ->options([
                      '1' => '用户',
                      '2' => '师傅',
                      '3' => '用户&师傅'
                  ])->default('1');
-
         });
     }
 }
