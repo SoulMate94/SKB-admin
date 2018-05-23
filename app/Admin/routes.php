@@ -44,8 +44,8 @@ Route::group([
             'skb_bank_card'          => SkbBankCardController::class,
             // 水可邦 服务类别
             'skb_service_cate'       => SkbServiceCateController::class,
-            // 水可邦 师傅认证 by jizw
-            'skb_master_verify'      => SkbMasterVerifyController::class
+            // 水可邦 师傅认证
+            'skb_master_verify'      => SkbMasterVerifyController::class    // by jizw
 
         ]);
     });
