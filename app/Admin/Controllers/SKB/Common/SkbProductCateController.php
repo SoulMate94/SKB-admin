@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Admin\Controllers\SKJ;
+namespace App\Admin\Controllers\SKB\Common;
 
-use App\Models\SKJ\ScicleanCatesModel;
+use App\Models\SKB\Common\SkbProductCateModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -11,7 +11,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 
-class ScicleanCatesController extends Controller
+class SkbProductCateController extends Controller
 {
     use ModelForm;
 
@@ -24,7 +24,7 @@ class ScicleanCatesController extends Controller
     {
         return Admin::content(function (Content $content) {
 
-            $content->header('净水器产品类别');
+            $content->header('产品类别');
             $content->description('description');
 
             $content->body($this->grid());
@@ -71,16 +71,21 @@ class ScicleanCatesController extends Controller
      */
     protected function grid()
     {
-        return Admin::grid(ScicleanCatesModel::class, function (Grid $grid) {
+        return Admin::grid(SkbProductCateModel::class, function (Grid $grid) {
 
             $grid->id('ID')->sortable();
 
-            $grid->cate_name('产品类别')->editable();
+            $grid->title('产品类别')->label('info');
 
-            $grid->created_at('添加时间');
+            $is_active = [
+                'on'  => ['value' => 1, 'text' => '激活', 'color' => 'primary'],
+                'off' => ['value' => 0, 'text' => '关闭', 'color' => 'default'],
+            ];
+            $grid->is_active('是否激活')->switch($is_active);
 
             $grid->disableExport();
-            $grid->disableFilter();
+
+            $grid->created_at('添加时间');
         });
     }
 
@@ -91,9 +96,18 @@ class ScicleanCatesController extends Controller
      */
     protected function form()
     {
-        return Admin::form(ScicleanCatesModel::class, function (Form $form) {
+        return Admin::form(SkbProductCateModel::class, function (Form $form) {
 
-            $form->text('cate_name', '产品类别');
+
+            $form->text('title', '产品类别名称');
+
+            $is_active = [
+                'on'  => ['value' => 1, 'text' => '激活', 'color' => 'primary'],
+                'off' => ['value' => 0, 'text' => '关闭', 'color' => 'default'],
+            ];
+            $form->switch('is_active', '是否激活')
+                 ->states($is_active)
+                 ->default(1);
 
         });
     }

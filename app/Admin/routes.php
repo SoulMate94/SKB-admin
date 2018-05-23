@@ -30,6 +30,8 @@ Route::group([
             'suggestions'             => SkbSuggestionsController::class,
             // 水可邦 区域开放设置
             'skb_open_area'           => SkbOpenAreaController::class,
+            // 水可邦 产品类别
+            'skb_product_cate'           => SkbProductCateController::class,
 
         ]);
     });
@@ -96,7 +98,6 @@ Route::group([
     $router->resources([
 
         // 水可邦 用户管理
-
         'skb_users'                  => SkbUsersController::class,
 
 

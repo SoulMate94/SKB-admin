@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkbServiceCateTable extends Migration
+class AddIsActiveToServiceCateTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateSkbServiceCateTable extends Migration
      */
     public function up()
     {
-        Schema::create('skb_service_cate', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::table('skb_service_cate', function (Blueprint $table) {
             $table->tinyInteger('is_active')->default(1)->comment('是否激活,1表示激活');
-            $table->string('title')->comment('服务类别名称');
-            $table->timestamps();
         });
     }
 
@@ -28,6 +25,8 @@ class CreateSkbServiceCateTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skb_service_cate');
+        Schema::table('skb_service_cate', function (Blueprint $table) {
+            $table->dropColumn('is_active');
+        });
     }
 }

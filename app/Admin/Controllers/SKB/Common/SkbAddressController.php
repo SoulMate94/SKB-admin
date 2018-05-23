@@ -125,8 +125,6 @@ class SkbAddressController extends Controller
     {
         return Admin::form(SkbAddressModel::class, function (Form $form) {
 
-            // $form->display('id', 'ID');
-
             $form->number('uid', '用户ID');
             $form->text('area', '地址区域');
             $form->text('addr', '详细地址');

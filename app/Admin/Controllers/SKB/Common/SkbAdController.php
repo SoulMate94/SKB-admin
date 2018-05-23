@@ -111,7 +111,6 @@ class SkbAdController extends Controller
     {
         return Admin::form(SkbAdModel::class, function (Form $form) {
 
-            // $form->display('id', 'ID');
             $form->text('title', '广告标题');
             $form->image('image', '图片上传');
             // $form->image('thumb', '缩略图上传');
@@ -127,8 +126,6 @@ class SkbAdController extends Controller
 
             $form->textarea('ad_explain', '广告说明');
 
-            // $form->display('created_at', 'Created At');
-            // $form->display('updated_at', 'Updated At');
         });
     }
 }

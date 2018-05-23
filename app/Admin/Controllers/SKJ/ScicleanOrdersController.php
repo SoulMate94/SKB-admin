@@ -78,7 +78,7 @@ class ScicleanOrdersController extends Controller
 
             $grid->id('ID')->sortable();
             $grid->order_number('订单编号');
-            $grid->product_name('产品名称');
+            $grid->product_name('产品名称')->label('primary');
             $grid->product_model('产品型号')->display(function ($product_model) {
                 return ScicleanPriceModel::find($product_model)->product_name;
             });
