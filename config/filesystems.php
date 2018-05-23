@@ -71,6 +71,14 @@ return [
             'url'        => env('APP_URL').'/uploads',
         ],
 
+        //SKB-api上传 by jizw
+        'SKB' => [
+            'driver'    => 'local',
+            'root'      => '../../SKB-api/public/uploads',
+            'visibility'=> 'public',
+            'url'       => '../../SKB-api/public/uploads',
+        ]
+
     ],
 
 ];
