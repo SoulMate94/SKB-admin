@@ -16,6 +16,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Illuminate\Support\MessageBag;
 
 class SkbMasterVerifyController  extends Controller
 {
@@ -104,6 +105,7 @@ class SkbMasterVerifyController  extends Controller
                 'off'  => ['value' => 0, 'text' => '可用', 'color' => 'success'],
             ];
             $grid->is_del('是否可用')->switch($is_del);
+            $grid->updated_at('修改时间');
 
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
@@ -241,6 +243,21 @@ script;
             $form->saving(function (Form $form) {
                 $form->service_sta_time = strtotime($form->service_sta_time);
                 $form->service_end_time = strtotime($form->service_end_time);
+                if($form->verify_status != -1) {
+                    $form->failure_reason = '';
+                    return true;
+                }
+
+                if($form->failure_reason == null) {
+                    $image = <<<image
+认证失败时必须要填写原因 <img style="max-width: 75px;border-radius: 15px" src="http://bpic.588ku.com/element_origin_min_pic/16/12/09/5a001d3048a8bd27feaa56729a31d502.jpg" />
+image;
+                    $error = new MessageBag([
+                        'title'   => 'Error',
+                        'message' => $image
+                    ]);
+                    return back()->with(compact('error'));
+                }
             });
         });
     }
