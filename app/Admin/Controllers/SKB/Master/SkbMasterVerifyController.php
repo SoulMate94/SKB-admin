@@ -167,7 +167,8 @@ class SkbMasterVerifyController  extends Controller
             $form->multipleImage('id_card_img', '身份证照片')
                 ->move('/masterVerify/'.date('Ymd'))
                 ->uniqueName()
-                ->removable();
+                ->removable()// 多图删除
+                ->help('这几张图片不可更改');
 
             $form ->display('product_type_id', '产品类别')
                   ->with(function ($dat) {
@@ -239,10 +240,13 @@ class SkbMasterVerifyController  extends Controller
 script;
             $form->html($script);
 
+            $form->ignore('id_card_img');
+
             //保存前回调
             $form->saving(function (Form $form) {
                 $form->service_sta_time = strtotime($form->service_sta_time);
                 $form->service_end_time = strtotime($form->service_end_time);
+
                 if($form->verify_status != -1) {
                     $form->failure_reason = '';
                     return true;
@@ -250,7 +254,7 @@ script;
 
                 if($form->failure_reason == null) {
                     $image = <<<image
-认证失败时必须要填写原因 <img style="max-width: 75px;border-radius: 15px" src="http://bpic.588ku.com/element_origin_min_pic/16/12/09/5a001d3048a8bd27feaa56729a31d502.jpg" />
+认证失败时必须要填写原因 <img style="max-width: 75px;border-radius: 15px" src="/uploads/images/MlZaK.gif" />
 image;
                     $error = new MessageBag([
                         'title'   => 'Error',
