@@ -78,7 +78,7 @@ class HomeController extends Controller
 
     public function count()
     {
-        $params['user_count']    = DB::table('skb_users')->count();
+        $params['user_count']    = DB::table('skb_users')->where('deleted_at', null)->count();
         //$params['order_count']   = DB::table('skb_orders')->count();
         $params['master_count']  = DB::table('skb_master_verify')->count();
         $params['article_count'] = DB::table('skb_article')->count();
