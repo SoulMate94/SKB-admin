@@ -93,7 +93,7 @@ class SkbMasterVerifyController  extends Controller
                     case -1:
                         return '<span class="label label-danger">认证失败</span>';
                     case 1 :
-                        return '<span class="label label-info">审核中...</span>';
+                        return '<span class="label label-info">审核中</span>';
                     case 2 :
                         return '<span class="label label-success">认证成功</span>';
                     default :
@@ -109,6 +109,23 @@ class SkbMasterVerifyController  extends Controller
 
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
+            });
+
+            $grid->filter(function($filter){
+
+                // 去掉默认的id过滤器
+                $filter->disableIdFilter();
+
+                // 在这里添加字段过滤器
+                $filter->like('skb_user.username', '用户姓名');
+                $filter->like('skb_user.nickname', '微信昵称');
+                $filter->like('skb_user.mobile', '手机号码');
+
+                $filter->where(function ($query) {
+
+                    $query->whereRaw("`product_type_id` like '%{$this->input[0]}%'");
+
+                }, '产品类别')->select('skb/master/verify/productType');
             });
 
             $grid->disableCreateButton();
@@ -264,5 +281,10 @@ image;
                 }
             });
         });
+    }
+
+    public function productType()
+    {
+        return ProductCate::select(['id', 'title as text'])->where('is_active', 1)->get()->toArray();
     }
 }

@@ -112,4 +112,6 @@ Route::group([
 
     $router->get('skb/area/district', 'SKB\Common\SkbOpenAreaController@district');
 
+    $router->get('skb/master/verify/productType', 'SKB\Master\SkbMasterVerifyController@productType');
+
 });
