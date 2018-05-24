@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+//debug
     /*
      * Laravel-admin name.
      */
