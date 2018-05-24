@@ -13,6 +13,7 @@ class SkbMasterVerifyModel  extends Model
         'work_area'         => 'json',
         'id_card_img'       => 'json',
         'product_type_id'   => 'json',
+        'service_type_id'   => 'json',
     ];
 
     public function skb_user()
@@ -23,5 +24,15 @@ class SkbMasterVerifyModel  extends Model
     public function skb_product_detail()
     {
         return $this->hasOne();
+    }
+
+    public function getServiceStaTimeAttribute($value)
+    {
+        return date('H:i:s',$value);
+    }
+
+    public function getServiceEndTimeAttribute($value)
+    {
+        return date('H:i:s',$value);
     }
 }

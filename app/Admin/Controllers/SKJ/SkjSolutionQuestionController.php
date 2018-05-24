@@ -81,8 +81,8 @@ class SkjSolutionQuestionController extends Controller
                 1 => '净水解决方案',
                 2 => '水路传输解决方案',
                 3 => '智能卫浴解决方案',
-                4 =>'软净水一体机解决方案',
-                5 =>'全无水质管理解决方案'
+                4 => '软净水一体机解决方案',
+                5 => '全无水质管理解决方案'
             ]);
 
             $grid->created_at();
