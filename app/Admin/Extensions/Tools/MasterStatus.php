@@ -6,17 +6,17 @@ use Encore\Admin\Admin;
 use Encore\Admin\Grid\Tools\AbstractTool;
 use Illuminate\Support\Facades\Request;
 
-class MasterGender extends AbstractTool
+class MasterStatus extends AbstractTool
 {
     public function script()
     {
-        $url = Request::fullUrlWithQuery(['gender' => '_gender_']);
+        $url = Request::fullUrlWithQuery(['status' => '_status_']);
 
         return <<<EOT
 
-$('input:radio.user-gender').change(function () {
+$('input:radio.master-status').change(function () {
 
-    var url = "$url".replace('_gender_', $(this).val());
+    var url = "$url".replace('_status_', $(this).val());
 
     $.pjax({container:'#pjax-container', url: url });
 
@@ -35,6 +35,6 @@ EOT;
             'sgl'   => '管道类',
         ];
 
-        return view('tools.gender', compact('options'));
+        return view('tools.status', compact('options'));
     }
 }

@@ -17,7 +17,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
-use App\Admin\Extensions\Tools\MasterGender;
+use App\Admin\Extensions\Tools\MasterStatus;
 
 class SkbMasterVerifyController  extends Controller
 {
@@ -109,7 +109,7 @@ class SkbMasterVerifyController  extends Controller
             $grid->updated_at('修改时间');
 
             $grid->tools(function ($tools) {
-                $tools->append(new MasterGender());
+                $tools->append(new MasterStatus());
             });
 
             $grid->actions(function ($actions) {
