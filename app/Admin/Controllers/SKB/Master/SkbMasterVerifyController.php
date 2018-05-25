@@ -17,6 +17,7 @@ use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
+use App\Admin\Extensions\Tools\MasterGender;
 
 class SkbMasterVerifyController  extends Controller
 {
@@ -106,6 +107,10 @@ class SkbMasterVerifyController  extends Controller
             ];
             $grid->is_del('是否可用')->switch($is_del);
             $grid->updated_at('修改时间');
+
+            $grid->tools(function ($tools) {
+                $tools->append(new MasterGender());
+            });
 
             $grid->actions(function ($actions) {
                 $actions->disableDelete();
