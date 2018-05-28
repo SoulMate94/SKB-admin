@@ -19,6 +19,7 @@ use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Request;
 use App\Admin\Extensions\Tools\MasterStatus;
+use Illuminate\Support\Facades\Request;
 
 class SkbMasterVerifyController  extends Controller
 {
@@ -85,9 +86,9 @@ class SkbMasterVerifyController  extends Controller
             $status = Request::get('status');
 
             $grid->model()->where('product_type_id', 'like', "%$status%");
+            $grid->model()->where('product_type_id', $status);
 
             $grid->id('ID')->sortable();
-            $grid->column('skb_user.username', '用户姓名')->label('success');
             $grid->column('skb_user.nickname', '微信昵称')
                  ->prependIcon('wechat');
             $grid->id_number('身份证号码')->label('warning');
