@@ -19,7 +19,6 @@ use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Request;
 use App\Admin\Extensions\Tools\MasterStatus;
-use Illuminate\Support\Facades\Request;
 
 class SkbMasterVerifyController  extends Controller
 {
