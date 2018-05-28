@@ -30,9 +30,9 @@ EOT;
         Admin::script($this->script());
 
         $options = [
-            'all'   => '全部',
-            'jsl'   => '净水类',
-            'sgl'   => '管道类',
+            'all' => '全部',
+            '1'   => '净水类',
+            '2'   => '管道类',
         ];
 
         return view('tools.status', compact('options'));

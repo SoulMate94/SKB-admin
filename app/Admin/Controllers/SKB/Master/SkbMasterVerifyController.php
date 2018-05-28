@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
 use Illuminate\Support\MessageBag;
 use App\Admin\Extensions\Tools\MasterStatus;
+use Illuminate\Support\Facades\Request;
 
 class SkbMasterVerifyController  extends Controller
 {
@@ -80,6 +81,9 @@ class SkbMasterVerifyController  extends Controller
     protected function grid()
     {
         return Admin::grid(SkbMasterVerifyModel::class, function (Grid $grid) {
+
+            $status = Request::get('status');
+            $grid->model()->where('product_type_id', $status);
 
             $grid->id('ID')->sortable();
             $grid->column('skb_user.username', '用户姓名')->label('success');
