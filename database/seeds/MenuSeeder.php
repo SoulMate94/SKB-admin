@@ -301,7 +301,18 @@ class MenuSeeder extends Seeder
             'icon'      => 'fa-wrench',
             'uri'       => 'skb_product_cate'
         ]);
-        // 水可邦-产品类别-end
+        // 水可邦-产品管理-end
+
+        $SkbProduct     = Menu::firstOrCreate([
+            'uri' => 'skb_product'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 1,
+            'title'     => '产品管理',
+            'icon'      => 'fa-slideshare',
+            'uri'       => 'skb_product'
+        ]);
+        // 水可邦-产品管理-end
 
         ///////////////////////////////////////
 

@@ -32,6 +32,8 @@ Route::group([
             'skb_open_area'           => SkbOpenAreaController::class,
             // 水可邦 产品类别
             'skb_product_cate'        => SkbProductCateController::class,
+            // 水可邦 产品管理
+            'skb_product'             => SkbProductController::class,
             // 水可邦 订单管理
             'skb_order'               => SkbOrdersController::class,
         ]);
