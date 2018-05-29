@@ -76,6 +76,7 @@ class SkbUsersController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->username('用户名')->prependIcon('user');
+            $grid->money('用户余额')->prependIcon('rmb');
             $grid->openid('微信ID')->prependIcon('wechat');
             $grid->nickname('微信昵称');
             $grid->avatar('微信头像')->image('', 132, 132);
@@ -123,6 +124,7 @@ class SkbUsersController extends Controller
                      '2' => '师傅',
                      '3' => '用户&师傅'
                  ])->default('1');
+            $form->display('money', '用户余额');
         });
     }
 }
