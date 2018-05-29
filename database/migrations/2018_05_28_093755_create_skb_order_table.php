@@ -24,7 +24,7 @@ class CreateSkbOrderTable extends Migration
             $table->integer('start_addr')->comment('始发地ID')->nullable();
             $table->integer('end_addr')->comment('目的地ID');
             $table->tinyInteger('orderby')->comment('排序');
-            $table->integer('appoint_time')->comment('预约时间')->nullable();
+            $table->integer('appoint_time')->comment('预约时间');
             $table->float('total_price')->comment('订单总价,也是最后成交价格');
             $table->float('user_price')->comment('用户报价')->nullable();
             $table->float('master_price')->comment('师傅报价')->nullable();

@@ -119,7 +119,7 @@ class SkbOrdersController extends Controller
                     case -8:
                         return '<span class="label label-danger">已撤单</span>';
                     default :
-                        return '<span class="label label-info">待接单</span>';
+                        return '<span class="label label-info">订单异常</span>';
                 }
             });
 
