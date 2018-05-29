@@ -161,6 +161,14 @@ class SkbOrdersController extends Controller
                 $filter->like('skb_user.username', '下单用户');
                 $filter->like('skb_master.username', '接单师傅');
                 $filter->like('order_remarks', '订单备注');
+                
+                $filter->where(function ($query) {
+                    $query->where('appoint_time', '>=', strtotime($this->input.' 00:00:00'));
+                }, '预约时间开始')->date();
+
+                $filter->where(function ($query) {
+                    $query->where('appoint_time', '<=', strtotime($this->input.' 23:59:59'));
+                }, '预约时间结束')->date();
             });
         });
     }
