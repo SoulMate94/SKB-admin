@@ -5,6 +5,7 @@ namespace App\Admin\Extensions\Tools;
 use Encore\Admin\Admin;
 use Encore\Admin\Grid\Tools\AbstractTool;
 use Illuminate\Support\Facades\Request;
+use App\Models\SKB\Common\SkbProductCateModel as ProductCate;
 
 class MasterStatus extends AbstractTool
 {
@@ -29,11 +30,12 @@ EOT;
     {
         Admin::script($this->script());
 
-        $options = [
-            'all' => '全部',
-            '1'   => '净水类',
-            '2'   => '管道类',
-        ];
+        $options = [' ' => '全部'];
+        $cate    = ProductCate::select(['id', 'title'])->where('is_active', 1)->get()->toArray();
+
+        foreach ($cate as $value) {
+            $options[$value['id']] = $value['title'];
+        }
 
         return view('tools.status', compact('options'));
     }
