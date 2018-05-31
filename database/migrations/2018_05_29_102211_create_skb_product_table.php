@@ -13,6 +13,7 @@ class CreateSkbProductTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('skb_product');
         Schema::create('skb_product', function (Blueprint $table) {
             $table->increments('id');
             $table->tinyInteger('product_cate_id')->comment('产品类别ID');

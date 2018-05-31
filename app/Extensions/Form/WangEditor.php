@@ -9,11 +9,11 @@ class WangEditor extends Field
     protected $view = 'admin.wang-editor';
 
     protected static $css = [
-        '/vendor/wangEditor-3.0.10/release/wangEditor.css',
+        '/vendor/wangEditor-3.0.9/release/wangEditor.min.css',
     ];
 
     protected static $js = [
-        '/vendor/wangEditor-3.0.10/release/wangEditor.js',
+        '/vendor/wangEditor-3.0.9/release/wangEditor.min.js',
     ];
 
     public function render()
@@ -27,7 +27,7 @@ var editor = new E('#{$this->id}');
 editor.customConfig.zIndex = 0
 editor.customConfig.uploadImgShowBase64 = true
 editor.customConfig.onchange = function (html) {
-    $('input[name=$name]').val(html);
+    $('input[name=\'$name\']').val(html);
 }
 editor.create()
 

@@ -128,7 +128,6 @@ class SkbArticleController extends Controller
             $form->text('title', '文章标题');
             $form->text('author', '文章作者');
             $form->image('picture', '文章图片');
-            $form->textarea('content', '内容');
             $form->number('order', '文章排序');
 
             $is_top = [
@@ -142,7 +141,9 @@ class SkbArticleController extends Controller
                 'off' => ['value' => 2, 'text' => '否', 'color' => 'default'],
             ];
             $form->switch('is_release', '是否发布')->states($is_release);
-
+            //$form->textarea('content', '内容');
+            //$form->we('content', '内容');
+            $form->ck('content', '内容');
         });
     }
 }
