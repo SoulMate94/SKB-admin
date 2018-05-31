@@ -85,7 +85,6 @@ class SkbMasterVerifyController  extends Controller
             $status = Request::get('status');
 
             $grid->model()->where('product_type_id', 'like', "%$status%");
-            $grid->model()->where('product_type_id', $status);
 
             $grid->id('ID')->sortable();
             $grid->column('skb_user.nickname', '微信昵称')
