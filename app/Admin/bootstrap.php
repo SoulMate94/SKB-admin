@@ -27,6 +27,7 @@ use App\Admin\Extensions\Column\FloatBar;
 use App\Admin\Extensions\Column\Qrcode;
 use App\Admin\Extensions\Column\UrlWrapper;
 use App\Admin\Extensions\Form\WangEditor;
+use App\Admin\Extensions\Form\CKEditor;
 use Encore\Admin\Facades\Admin;
 
 Form::forget(['map', 'editor']);
@@ -52,4 +53,6 @@ Column::extend('urlWrapper', UrlWrapper::class);
 Column::extend('action', Grid\Displayers\Actions::class);
 
 Form::extend('we', WangEditor::class);
+Form::extend('ck', CKEditor::class);
+
 
