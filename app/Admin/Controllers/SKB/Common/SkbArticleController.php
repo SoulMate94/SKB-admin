@@ -143,7 +143,6 @@ class SkbArticleController extends Controller
             $form->switch('is_release', '是否发布')->states($is_release);
             //$form->textarea('content', '内容');
             $form->we('content', '内容');
-
         });
     }
 }

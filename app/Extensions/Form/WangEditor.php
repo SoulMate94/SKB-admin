@@ -13,7 +13,7 @@ class WangEditor extends Field
     ];
 
     protected static $js = [
-        '/vendor/wangEditor-3.0.9/release/wangEditor.js',
+        '/vendor/wangEditor-3.0.9/release/wangEditor.min.js',
     ];
 
     public function render()
