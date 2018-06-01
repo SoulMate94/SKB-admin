@@ -56,7 +56,7 @@ class HomeController extends Controller
                     '用户管理', 'users', 'aqua', '/admin/skb_users', $params['user_count']
                 ));
                 $row->column(3, new InfoBox(
-                    '订单管理', 'shopping-cart', 'green', 'admin/skb_order', '150'
+                    '订单管理', 'shopping-cart', 'green', '/admin/skb_order', $params['orders_count']
                 ));
                 $row->column(3, new InfoBox(
                     '师傅管理', 'user-secret', 'yellow', '/admin/skb_master_verify', $params['master_count']
@@ -79,7 +79,7 @@ class HomeController extends Controller
     public function count()
     {
         $params['user_count']    = DB::table('skb_users')->where('deleted_at', null)->count();
-        //$params['order_count']   = DB::table('skb_orders')->count();
+        $params['orders_count']  = DB::table('skb_orders')->count();
         $params['master_count']  = DB::table('skb_master_verify')->count();
         $params['article_count'] = DB::table('skb_article')->count();
 
