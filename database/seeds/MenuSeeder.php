@@ -291,24 +291,35 @@ class MenuSeeder extends Seeder
         ]);
         // 水可邦-订单管理-end
 
+        // 水可邦-产品管理-start
+        $SkbProduct = Menu::firstOrCreate([
+            'uri' => 'skb_product_menu'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 1,
+            'title'     => '产品管理',
+            'icon'      => 'fa-slideshare',
+            'uri'       => 'skb_product_menu'
+        ]);
+
         // 水可邦-产品类别-start
         $SkbProductCate = Menu::firstOrCreate([
             'uri' => 'skb_product_cate'
         ], [
-            'parent_id' => $SKB->id,
+            'parent_id' => $SkbProduct->id,
             'order'     => 1,
             'title'     => '产品类别',
             'icon'      => 'fa-wrench',
             'uri'       => 'skb_product_cate'
         ]);
-        // 水可邦-产品管理-end
 
-        $SkbProduct     = Menu::firstOrCreate([
+        // 水可邦-产品列表-start
+        $SkbProductList = Menu::firstOrCreate([
             'uri' => 'skb_product'
         ], [
-            'parent_id' => $SKB->id,
+            'parent_id' => $SkbProduct->id,
             'order'     => 1,
-            'title'     => '产品管理',
+            'title'     => '产品列表',
             'icon'      => 'fa-slideshare',
             'uri'       => 'skb_product'
         ]);
