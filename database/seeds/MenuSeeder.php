@@ -170,22 +170,23 @@ class MenuSeeder extends Seeder
             'uri' => 'skb_bank_card'
         ], [
             'parent_id' => $SKB->id,
-            'order' => 21,
-            'title' => '银行卡管理',
-            'icon' => 'fa-credit-card-alt',
-            'uri' => 'skb_bank_card'
+            'order'     => 21,
+            'title'     => '银行卡管理',
+            'icon'      => 'fa-credit-card-alt',
+            'uri'       => 'skb_bank_card'
         ]);
 
-        // 水可邦-银行卡管理
+        // 水可邦-提现管理
         Menu::firstOrCreate([
             'uri' => 'skb_withdraw_log'
         ], [
             'parent_id' => $SKB->id,
-            'order' => 22,
-            'title' => '提现管理',
-            'icon' => 'fa-dollar',
-            'uri' => 'skb_withdraw_log'
+            'order'     => 22,
+            'title'     => '提现管理',
+            'icon'      => 'fa-dollar',
+            'uri'       => 'skb_withdraw_log'
         ]);
+        // 水可邦-钱包管理-end
 
         // 水可邦-服务类别
         Menu::firstOrCreate([
