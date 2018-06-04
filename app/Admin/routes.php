@@ -55,6 +55,18 @@ Route::group([
         ]);
     });
 
+    // 用户端端
+    $router->group([
+        'namespace' => 'SKB\User',
+    ], function ($router) {
+        $router->resources([
+
+            // 评论管理
+            'skb_cmt'          => SkbCommentController::class,
+
+        ]);
+    });
+
     // 水可净
     $router->group([
         'namespace' => 'SKJ',

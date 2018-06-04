@@ -211,7 +211,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦--用户端--start
-        $SkbUser            =   Menu::firstOrCreate([
+        $SkbUser    =   Menu::firstOrCreate([
             'uri' => 'skb_user'
         ], [
             'parent_id' => $SKB->id,
@@ -219,6 +219,16 @@ class MenuSeeder extends Seeder
             'title' => '用户端',
             'icon'  => 'fa-user-md',
             'uri'   => 'skb_user'
+        ]);
+
+        $SkbUser    =   Menu::firstOrCreate([
+            'uri' => 'skb_cmt'
+        ], [
+            'parent_id' => $SkbUser->id,
+            'order' => 99,
+            'title' => '评论管理',
+            'icon'  => 'fa-comments',
+            'uri'   => 'skb_cmt'
         ]);
         // 水可邦--用户端--end
 

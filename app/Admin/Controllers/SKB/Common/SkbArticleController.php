@@ -141,9 +141,7 @@ class SkbArticleController extends Controller
                 'off' => ['value' => 2, 'text' => '否', 'color' => 'default'],
             ];
             $form->switch('is_release', '是否发布')->states($is_release);
-            //$form->textarea('content', '内容');
-            //$form->we('content', '内容');
-            $form->ck('content', '内容');
+            $form->textarea('content', '内容');
         });
     }
 }
