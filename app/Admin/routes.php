@@ -62,7 +62,7 @@ Route::group([
         $router->resources([
 
             // 评论管理
-            'skb_cmt'          => SkbCommentController::class,
+            'skb_cmt'          => SkbCommentsController::class,
 
         ]);
     });

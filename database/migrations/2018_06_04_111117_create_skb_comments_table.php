@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSkbCommentTable extends Migration
+class CreateSkbCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateSkbCommentTable extends Migration
      */
     public function up()
     {
-        Schema::create('skb_comment', function (Blueprint $table) {
+        Schema::dropIfExists('skb_comments');
+        Schema::create('skb_comments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('order_id')->comment('订单ID');
             $table->string('user_cmt')->comment('用户评论');
-            $table->float('user_score')->comment('用户评分');
+            $table->float('user_score')->comment('用户评分')->nullable();
             $table->string('master_cmt')->comment('师傅评论,预留字段')->nullable();
             $table->string('master_score')->comment('师傅评分,预留字段')->nullable();
             $table->timestamps();
@@ -31,6 +32,6 @@ class CreateSkbCommentTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('skb_comment');
+        Schema::dropIfExists('skb_comments');
     }
 }
