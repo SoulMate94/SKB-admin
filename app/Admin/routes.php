@@ -36,6 +36,10 @@ Route::group([
             'skb_product'             => SkbProductController::class,
             // 水可邦 订单管理
             'skb_order'               => SkbOrdersController::class,
+            // 水可邦 标签分类
+            'skb_tags_cate'           => SkbTagsCateController::class,
+            // 水可邦 标签列表
+            'skb_tags_list'           => SkbTagsListController::class,
         ]);
     });
 

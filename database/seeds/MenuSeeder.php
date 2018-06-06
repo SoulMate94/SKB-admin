@@ -336,6 +336,38 @@ class MenuSeeder extends Seeder
         ]);
         // 水可邦-产品管理-end
 
+        // 水可邦-标签管理-start
+        $SkbTags = Menu::firstOrCreate([
+            'uri' => 'skb_tags'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 1,
+            'title'     => '标签管理',
+            'icon'      => 'fa-tags',
+            'uri'       => 'skb_tags'
+        ]);
+
+        Menu::firstOrCreate([
+            'uri' => 'skb_tags_cate'
+        ], [
+            'parent_id' => $SkbTags->id,
+            'order'     => 1,
+            'title'     => '标签分类',
+            'icon'      => 'fa-hashtag',
+            'uri'       => 'skb_tags_cate'
+        ]);
+
+        Menu::firstOrCreate([
+            'uri' => 'skb_tags_list'
+        ], [
+            'parent_id' => $SkbTags->id,
+            'order'     => 1,
+            'title'     => '标签列表',
+            'icon'      => 'fa-tag',
+            'uri'       => 'skb_tags_list'
+        ]);
+        // 水可邦-标签管理-end
+
         ///////////////////////////////////////
 
 

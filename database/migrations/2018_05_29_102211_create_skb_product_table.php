@@ -18,7 +18,6 @@ class CreateSkbProductTable extends Migration
             $table->increments('id');
             $table->tinyInteger('product_cate_id')->comment('产品类别ID');
             $table->string('product_name')->comment('产品名称');
-            $table->float('product_price')->comment('产品建议安装价格');
             $table->string('product_img')->comment('产品图片');
             $table->string('product_exp')->comment('产品说明')->nullable();
             $table->tinyInteger('is_active')->default('1')->comment('是否可用,1表示可用');

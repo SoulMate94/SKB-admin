@@ -78,8 +78,9 @@ class SkbSuggestionsController extends Controller
             $grid->feedback_name('反馈人姓名');
             $grid->feedback_mobile('反馈人手机号码');
             $grid->feedback_content('反馈人内容');
-            $grid->reply_name('回复人姓名');
-            $grid->reply_content('回复内容');
+            $grid->feedback_img('反馈人图片')->image('', 100, 100);
+            //$grid->reply_name('回复人姓名');
+            //$grid->reply_content('回复内容');
 
             // 禁用创建按钮
             $grid->disableCreation();
@@ -87,7 +88,7 @@ class SkbSuggestionsController extends Controller
             $grid->disableExport();
 
             $grid->created_at('创建时间');
-            $grid->updated_at('回复时间');
+            //$grid->updated_at('回复时间');
 
             $grid->filter(function($filter){
 
@@ -114,11 +115,10 @@ class SkbSuggestionsController extends Controller
             $form->display('feedback_name', '反馈人姓名');
             $form->display('feedback_mobile', '反馈人手机号码');
             $form->display('feedback_content', '反馈人内容');
+            $form->image('feedback_img', '反馈图片');
             $form->text('reply_name', '回复人姓名');
             $form->textarea('reply_content', '回复内容');
-
-            // $form->display('created_at', 'Created At');
-             $form->datetime('updated_at', '回复时间');
+            $form->datetime('updated_at', '回复时间');
         });
     }
 }
