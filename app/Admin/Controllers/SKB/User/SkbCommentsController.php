@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers\SKB\User;
 
 use App\Models\SKB\User\SkbCommentsModel;
+use App\Models\SKB\Common\SkbOrdersModel;
+use App\Models\SkbUsersModel;
 
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -76,6 +78,17 @@ class SkbCommentsController extends Controller
             $grid->id('ID')->sortable();
 
             $grid->order_id('订单ID')->label('success');
+            $grid->column('用户名称')->display(function () {
+                $uid = SkbOrdersModel::find($this->order_id)->uid;
+                $u_username = SkbUsersModel::find($uid)->username;
+                return $u_username;
+            })->prependIcon('user');
+            $grid->column('师傅名称')->display(function () {
+                $mid = SkbOrdersModel::find($this->order_id)->mid;
+                $m_username = SkbUsersModel::find($mid)->username;
+
+                return $m_username;
+            })->prependIcon('user-secret');
 
             $grid->user_cmt('用户评论')->limit(30);
             $grid->service_score('服务态度评分')->display(function ($service_score) {
@@ -131,7 +144,11 @@ class SkbCommentsController extends Controller
             $form->slider('master_score', '师傅给用户的评分')
                  ->options(['max' => 5, 'min' => 1, 'step' => 0.1, 'postfix' => '用户评分'])
                  ->help('暂时不开放');
-
         });
+    }
+
+    public function getUsername($id)
+    {
+        return SkbUsersModel::find($id)->username;
     }
 }
