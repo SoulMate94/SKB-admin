@@ -82,7 +82,7 @@ class SkbTagsListController extends Controller
 
             $grid->tags('标签')->display(function ($tags) {
                 $tags = explode('/', $tags);
-                
+
                 $res  = '';
                 foreach ($tags as $tag) {
                     $res .= '<span class="label label-primary">'.$tag.'</span>'.PHP_EOL;

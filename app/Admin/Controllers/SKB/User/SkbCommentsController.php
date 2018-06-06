@@ -81,13 +81,14 @@ class SkbCommentsController extends Controller
             $grid->column('用户名称')->display(function () {
                 $uid = SkbOrdersModel::find($this->order_id)->uid;
                 $u_username = SkbUsersModel::find($uid)->username;
-                return $u_username;
+
+                return $u_username ?: '';
             })->prependIcon('user');
             $grid->column('师傅名称')->display(function () {
                 $mid = SkbOrdersModel::find($this->order_id)->mid;
                 $m_username = SkbUsersModel::find($mid)->username;
 
-                return $m_username;
+                return $m_username ?: '';
             })->prependIcon('user-secret');
 
             $grid->user_cmt('用户评论')->limit(30);
