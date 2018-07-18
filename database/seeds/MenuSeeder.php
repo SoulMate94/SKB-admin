@@ -165,24 +165,46 @@ class MenuSeeder extends Seeder
             'uri'  => 'skb_address'
         ]);
 
+        // 水可邦-提现管理
+        $SkbWithdraw = Menu::firstOrCreate([
+            'uri' => 'skb_withdraw'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 21,
+            'title'     => '提现管理',
+            'icon'      => 'fa-credit-card-alt',
+            'uri'       => 'skb_withdraw'
+        ]);
+
         // 水可邦-银行卡管理
         Menu::firstOrCreate([
             'uri' => 'skb_bank_card'
         ], [
-            'parent_id' => $SKB->id,
-            'order'     => 21,
-            'title'     => '银行卡管理',
+            'parent_id' => $SkbWithdraw->id,
+            'order'     => 1,
+            'title'     => '银行卡',
             'icon'      => 'fa-credit-card-alt',
             'uri'       => 'skb_bank_card'
+        ]);
+
+        // 水可邦-支付宝管理
+        Menu::firstOrCreate([
+            'uri' => 'skb_alipay'
+        ], [
+            'parent_id' => $SkbWithdraw->id,
+            'order'     => 2,
+            'title'     => '支付宝',
+            'icon'      => 'fa-btc',
+            'uri'       => 'skb_alipay'
         ]);
 
         // 水可邦-提现管理
         Menu::firstOrCreate([
             'uri' => 'skb_withdraw_log'
         ], [
-            'parent_id' => $SKB->id,
-            'order'     => 22,
-            'title'     => '提现管理',
+            'parent_id' => $SkbWithdraw->id,
+            'order'     => 3,
+            'title'     => '提现申请',
             'icon'      => 'fa-dollar',
             'uri'       => 'skb_withdraw_log'
         ]);
