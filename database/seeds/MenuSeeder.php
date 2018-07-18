@@ -269,7 +269,7 @@ class MenuSeeder extends Seeder
 
 
         // 水可邦-区域管理-start
-        $SkbArea            = Menu::firstOrCreate([
+        $SkbArea        = Menu::firstOrCreate([
             'uri' => 'skb_china'
         ], [
             'parent_id' => $SKB->id,
@@ -292,11 +292,22 @@ class MenuSeeder extends Seeder
 
         // 水可邦-订单管理-start
         $SkbOrder = Menu::firstOrCreate([
-            'uri' => 'skb_order'
+            'uri' => 'skb_order_menu'
         ], [
             'parent_id' => $SKB->id,
             'order'     => 1,
             'title'     => '订单管理',
+            'icon'      => 'fa-shopping-bag',
+            'uri'       => 'skb_order_menu'
+        ]);
+
+        // 水可邦-订单列表-start
+        Menu::firstOrCreate([
+            'uri' => 'skb_order'
+        ], [
+            'parent_id' => $SkbOrder->id,
+            'order'     => 1,
+            'title'     => '订单列表',
             'icon'      => 'fa-shopping-bag',
             'uri'       => 'skb_order'
         ]);
