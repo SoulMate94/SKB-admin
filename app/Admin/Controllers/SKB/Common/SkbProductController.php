@@ -81,9 +81,12 @@ class SkbProductController extends Controller
                 return SkbProductCateModel::find($product_cate_id)->title;
             })->label('info');
             $grid->product_img('产品图片')->image('', 100, 100);
-            $grid->product_price('产品建议安装价格')->display(function ($product_price) {
-                return $product_price.'元';
-            });
+            $grid->install_price('建议安装价格')->display(function ($install_price) {
+                return $install_price.'元';
+            })->prependIcon('rmb');
+            $grid->uninstall_price('建议拆装价格')->display(function ($uninstall_price) {
+                return $uninstall_price.'元';
+            })->prependIcon('rmb');
 
             $grid->product_exp('产品说明')->display(function ($product_exp) {
                 return $product_price ?? '暂无说明';
@@ -116,7 +119,8 @@ class SkbProductController extends Controller
                  ->pluck('title', 'id'));
 
             $form->text('product_name', '产品名称');
-            $form->currency('product_price', '产品建议安装价格')->symbol('￥');
+            $form->currency('install_price', '建议安装价格')->symbol('￥');
+            $form->currency('uninstall_price', '建议拆装价格')->symbol('￥');
             $form->image('product_img', '产品图片');
             $form->textarea('product_exp', '产品说明');
             $is_active = [

@@ -36,6 +36,10 @@ Route::group([
             'skb_product'             => SkbProductController::class,
             // 水可邦 订单管理
             'skb_order'               => SkbOrdersController::class,
+            // 水可邦 标签分类
+            'skb_tags_cate'           => SkbTagsCateController::class,
+            // 水可邦 标签列表
+            'skb_tags_list'           => SkbTagsListController::class,
         ]);
     });
 
@@ -51,6 +55,18 @@ Route::group([
             'skb_service_cate'       => SkbServiceCateController::class,
             // 水可邦 师傅认证
             'skb_master_verify'      => SkbMasterVerifyController::class    // by jizw
+
+        ]);
+    });
+
+    // 用户端端
+    $router->group([
+        'namespace' => 'SKB\User',
+    ], function ($router) {
+        $router->resources([
+
+            // 评论管理
+            'skb_cmt'          => SkbCommentsController::class,
 
         ]);
     });

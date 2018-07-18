@@ -132,8 +132,9 @@ class SkbOrdersController extends Controller
             $grid->total_price('订单总额')->display(function ($total_price) {
                 return $total_price.'元';
             })->prependIcon('rmb');
-            // $grid->user_price('用户报价');
-            // $grid->master_price('师傅报价');
+            $grid->visit_cost('订单总额')->display(function ($visit_cost) {
+                return $visit_cost.'元';
+            })->prependIcon('rmb');
 
             $grid->end_addr('安装地点')->display(function ($end_addr) {
                 return SkbAddressModel::find($end_addr)->area.
@@ -286,6 +287,7 @@ class SkbOrdersController extends Controller
             });
 
             $form->currency('total_price', '订单总额')->symbol('￥');
+            $form->currency('visit_cost', '上门费')->symbol('￥');
 
             $form->datetime('appoint_time', '预约时间');
 

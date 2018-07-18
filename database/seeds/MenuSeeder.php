@@ -170,22 +170,23 @@ class MenuSeeder extends Seeder
             'uri' => 'skb_bank_card'
         ], [
             'parent_id' => $SKB->id,
-            'order' => 21,
-            'title' => '银行卡管理',
-            'icon' => 'fa-credit-card-alt',
-            'uri' => 'skb_bank_card'
+            'order'     => 21,
+            'title'     => '银行卡管理',
+            'icon'      => 'fa-credit-card-alt',
+            'uri'       => 'skb_bank_card'
         ]);
 
-        // 水可邦-银行卡管理
+        // 水可邦-提现管理
         Menu::firstOrCreate([
             'uri' => 'skb_withdraw_log'
         ], [
             'parent_id' => $SKB->id,
-            'order' => 22,
-            'title' => '提现管理',
-            'icon' => 'fa-dollar',
-            'uri' => 'skb_withdraw_log'
+            'order'     => 22,
+            'title'     => '提现管理',
+            'icon'      => 'fa-dollar',
+            'uri'       => 'skb_withdraw_log'
         ]);
+        // 水可邦-钱包管理-end
 
         // 水可邦-服务类别
         Menu::firstOrCreate([
@@ -210,7 +211,7 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦--用户端--start
-        $SkbUser            =   Menu::firstOrCreate([
+        $SkbUser    =   Menu::firstOrCreate([
             'uri' => 'skb_user'
         ], [
             'parent_id' => $SKB->id,
@@ -218,6 +219,16 @@ class MenuSeeder extends Seeder
             'title' => '用户端',
             'icon'  => 'fa-user-md',
             'uri'   => 'skb_user'
+        ]);
+
+        $SkbUser    =   Menu::firstOrCreate([
+            'uri' => 'skb_cmt'
+        ], [
+            'parent_id' => $SkbUser->id,
+            'order' => 99,
+            'title' => '评论管理',
+            'icon'  => 'fa-comments',
+            'uri'   => 'skb_cmt'
         ]);
         // 水可邦--用户端--end
 
@@ -258,7 +269,7 @@ class MenuSeeder extends Seeder
 
 
         // 水可邦-区域管理-start
-        $SkbArea            = Menu::firstOrCreate([
+        $SkbArea        = Menu::firstOrCreate([
             'uri' => 'skb_china'
         ], [
             'parent_id' => $SKB->id,
@@ -281,38 +292,92 @@ class MenuSeeder extends Seeder
 
         // 水可邦-订单管理-start
         $SkbOrder = Menu::firstOrCreate([
-            'uri' => 'skb_order'
+            'uri' => 'skb_order_menu'
         ], [
             'parent_id' => $SKB->id,
             'order'     => 1,
             'title'     => '订单管理',
             'icon'      => 'fa-shopping-bag',
+            'uri'       => 'skb_order_menu'
+        ]);
+
+        // 水可邦-订单列表-start
+        Menu::firstOrCreate([
+            'uri' => 'skb_order'
+        ], [
+            'parent_id' => $SkbOrder->id,
+            'order'     => 1,
+            'title'     => '订单列表',
+            'icon'      => 'fa-shopping-bag',
             'uri'       => 'skb_order'
         ]);
         // 水可邦-订单管理-end
 
-        // 水可邦-产品类别-start
-        $SkbProductCate = Menu::firstOrCreate([
-            'uri' => 'skb_product_cate'
-        ], [
-            'parent_id' => $SKB->id,
-            'order'     => 1,
-            'title'     => '产品类别',
-            'icon'      => 'fa-wrench',
-            'uri'       => 'skb_product_cate'
-        ]);
-        // 水可邦-产品管理-end
-
-        $SkbProduct     = Menu::firstOrCreate([
-            'uri' => 'skb_product'
+        // 水可邦-产品管理-start
+        $SkbProduct = Menu::firstOrCreate([
+            'uri' => 'skb_product_menu'
         ], [
             'parent_id' => $SKB->id,
             'order'     => 1,
             'title'     => '产品管理',
             'icon'      => 'fa-slideshare',
+            'uri'       => 'skb_product_menu'
+        ]);
+
+        // 水可邦-产品类别-start
+        $SkbProductCate = Menu::firstOrCreate([
+            'uri' => 'skb_product_cate'
+        ], [
+            'parent_id' => $SkbProduct->id,
+            'order'     => 1,
+            'title'     => '产品类别',
+            'icon'      => 'fa-wrench',
+            'uri'       => 'skb_product_cate'
+        ]);
+
+        // 水可邦-产品列表-start
+        $SkbProductList = Menu::firstOrCreate([
+            'uri' => 'skb_product'
+        ], [
+            'parent_id' => $SkbProduct->id,
+            'order'     => 1,
+            'title'     => '产品列表',
+            'icon'      => 'fa-slideshare',
             'uri'       => 'skb_product'
         ]);
         // 水可邦-产品管理-end
+
+        // 水可邦-标签管理-start
+        $SkbTags = Menu::firstOrCreate([
+            'uri' => 'skb_tags'
+        ], [
+            'parent_id' => $SKB->id,
+            'order'     => 1,
+            'title'     => '标签管理',
+            'icon'      => 'fa-tags',
+            'uri'       => 'skb_tags'
+        ]);
+
+        Menu::firstOrCreate([
+            'uri' => 'skb_tags_cate'
+        ], [
+            'parent_id' => $SkbTags->id,
+            'order'     => 1,
+            'title'     => '标签分类',
+            'icon'      => 'fa-hashtag',
+            'uri'       => 'skb_tags_cate'
+        ]);
+
+        Menu::firstOrCreate([
+            'uri' => 'skb_tags_list'
+        ], [
+            'parent_id' => $SkbTags->id,
+            'order'     => 1,
+            'title'     => '标签列表',
+            'icon'      => 'fa-tag',
+            'uri'       => 'skb_tags_list'
+        ]);
+        // 水可邦-标签管理-end
 
         ///////////////////////////////////////
 
