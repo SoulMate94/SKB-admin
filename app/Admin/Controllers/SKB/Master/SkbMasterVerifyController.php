@@ -217,7 +217,7 @@ class SkbMasterVerifyController  extends Controller
                             return rtrim($res, '--');
                         });
 
-            $form->display('service_type_id', '服务类别')
+            /*$form->display('service_type_id', '服务类别')
                 ->with(function ($data) {
                             if(!$data){
                                 return '没有服务';
@@ -232,7 +232,7 @@ class SkbMasterVerifyController  extends Controller
                                         ->first()['title'].'--';
                             }
                             return rtrim($res, '--');
-                        });
+                        });*/
 
             $form->timeRange('service_sta_time','service_end_time','服务时间');
 
