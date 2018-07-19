@@ -53,6 +53,8 @@ Route::group([
             'skb_bank_card'          => SkbBankCardController::class,
             // 水可邦 支付宝管理
             'skb_alipay'             => SkbAlipayController::class,
+            // 水可邦 提现申请
+            'skb_withdraw_log'       => SkbWithdrawLogController::class,
             // 水可邦 服务类别
             'skb_service_cate'       => SkbServiceCateController::class,
             // 水可邦 师傅认证
