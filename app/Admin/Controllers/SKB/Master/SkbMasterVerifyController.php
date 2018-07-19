@@ -110,6 +110,13 @@ class SkbMasterVerifyController  extends Controller
                 'off'  => ['value' => 0, 'text' => '可用', 'color' => 'success'],
             ];
             $grid->is_del('是否可用')->switch($is_del);
+
+            $is_work = [
+                'on'   => ['value' => 1, 'text' => '接单', 'color' => 'danger'],
+                'off'  => ['value' => 0, 'text' => '休息', 'color' => 'success'],
+            ];
+            $grid->is_work('是否接单')->switch($is_work);
+
             $grid->updated_at('修改时间');
 
             $grid->tools(function ($tools) {
@@ -243,6 +250,12 @@ class SkbMasterVerifyController  extends Controller
                 'off'  => ['value' => 0, 'text' => '可用', 'color' => 'success'],
             ];
             $form->switch('is_del', '是否可用')->states($is_del);
+
+            $is_work = [
+                'on'   => ['value' => 1, 'text' => '接单', 'color' => 'danger'],
+                'off'  => ['value' => 0, 'text' => '休息', 'color' => 'success'],
+            ];
+            $form->switch('is_work', '是否接单')->states($is_work);
 
             $form->textarea('failure_reason','认证失败原因')
                  ->attribute('id','failure_reason')
