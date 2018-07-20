@@ -290,6 +290,29 @@ class MenuSeeder extends Seeder
         // 用户管理--end
 
 
+
+        // 水可邦-系统管理
+        $SKB_system        =   Menu::firstOrCreate([
+            'uri' => 'skb-system'
+        ], [
+            'parent_id' => $SKB->id,
+            'order' => 19,
+            'title' => '系统管理',
+            'icon' => 'fa-sitemap',
+            'uri' => 'skb-system'
+        ]);
+
+        // 水可邦-消息管理
+        Menu::firstOrCreate([
+            'uri' => 'skb_system_message'
+        ], [
+            'parent_id' => $SKB_system->id,
+            'order'     => 1,
+            'title'     => '消息管理',
+            'icon'      => 'fa-send-o',
+            'uri'       => 'skb_system_message'
+        ]);
+
         // 水可邦-区域管理-start
         $SkbArea        = Menu::firstOrCreate([
             'uri' => 'skb_china'

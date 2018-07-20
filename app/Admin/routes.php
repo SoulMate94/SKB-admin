@@ -43,6 +43,17 @@ Route::group([
         ]);
     });
 
+    // 水可邦 系统部分
+    $router->group([
+        'namespace' => 'SKB\System',
+    ], function ($router) {
+        $router->resources([
+
+            // 水可邦 消息管理
+            'skb_system_message'      => MessageController::class,    // by jizw
+        ]);
+    });
+
     // 师傅端
     $router->group([
         'namespace' => 'SKB\Master',
