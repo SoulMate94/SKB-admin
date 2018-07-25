@@ -177,6 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Ixudra\Curl\CurlServiceProvider::class,
+
     ],
 
     /*
@@ -227,6 +229,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'BankCard'  => Zhuzhichao\BankCardInfo\BankCard::class, // by caoxl 
 
+        'Curl'          => Ixudra\Curl\Facades\Curl::class, // by jizw
     ],
 
 ];

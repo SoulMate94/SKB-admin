@@ -12,6 +12,7 @@ use Encore\Admin\Facades\Admin;
 use Encore\Admin\Layout\Content;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\ModelForm;
+use Ixudra\Curl\Facades\Curl;
 
 class MessageController extends Controller
 {
@@ -119,6 +120,30 @@ class MessageController extends Controller
 
             $form->display('created_at', 'Created At');
             $form->display('updated_at', 'Updated At');
+
+            $form->saved(function (Form $form) {
+                $user_id     = $form->model()->recipient_id;
+
+                $openid      = SkbUsersModel::select('openid')
+                                                ->where(['id',$user_id])
+                                                ->get()
+                                                ->openid;
+                $template_id = 'messageNotification';
+                $dat         = [
+                            'Admin',
+                            $form->model()->content,
+                            date('y-m-d')
+                        ];
+
+                $response = Curl::to('https://skb-api.sciclean.cn/')
+                                ->withData([
+                                    'user_id'     => $user_id,
+                                    'open_id'     => $openid,
+                                    'template_id' => $template_id,
+                                    'dat'         => json_encode($dat),
+                                ])
+                                ->post();
+            });
         });
     }
 }
