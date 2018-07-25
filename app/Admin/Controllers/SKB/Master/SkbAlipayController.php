@@ -77,7 +77,7 @@ class SkbAlipayController extends Controller
 
             $grid->master_id('师傅ID')->label('success');
             $grid->real_name('真实姓名')->label('info');
-            $grid->alipay_account('支付宝账号');
+            $grid->alipay_account('支付宝账号')->prependIcon('font');
             $is_verify = [
                             'on'  => ['value' => 1, 'text' => '通过', 'color' => 'primary'],
                             'off' => ['value' => 0, 'text' => '拒绝', 'color' => 'default'],
