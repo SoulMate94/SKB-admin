@@ -19,27 +19,27 @@ Route::group([
         $router->resources([
 
             // 水可邦 文章列表
-            'skb_article_list'        => SkbArticleController::class,
+            'skb_article_list'        => SkbArticleController::class, // by caoxl
             // 水可邦 文章分类
-            'skb_article_cate'        => SkbArticleCateController::class,
+            'skb_article_cate'        => SkbArticleCateController::class,  // by caoxl
             // 水可邦 广告管理
-            'skb_ad'                  => SkbAdController::class,
+            'skb_ad'                  => SkbAdController::class,  // by caoxl
             // 水可邦 地址管理
-            'skb_address'             => SkbAddressController::class,
-            // 意见反馈
-            'suggestions'             => SkbSuggestionsController::class,
+            'skb_address'             => SkbAddressController::class,  // by caoxl
+            // 意见反馈V1
+            'suggestions'             => SkbSuggestionsController::class,  // by caoxl
             // 水可邦 区域开放设置
-            'skb_open_area'           => SkbOpenAreaController::class,
+            'skb_open_area'           => SkbOpenAreaController::class,  // by caoxl
             // 水可邦 产品类别
-            'skb_product_cate'        => SkbProductCateController::class,
+            'skb_product_cate'        => SkbProductCateController::class,  // by caoxl
             // 水可邦 产品管理
-            'skb_product'             => SkbProductController::class,
+            'skb_product'             => SkbProductController::class,  // by caoxl
             // 水可邦 订单管理
-            'skb_order'               => SkbOrdersController::class,
+            'skb_order'               => SkbOrdersController::class,  // by caoxl
             // 水可邦 标签分类
-            'skb_tags_cate'           => SkbTagsCateController::class,
+            'skb_tags_cate'           => SkbTagsCateController::class,  // by caoxl
             // 水可邦 标签列表
-            'skb_tags_list'           => SkbTagsListController::class,
+            'skb_tags_list'           => SkbTagsListController::class,  // by caoxl
         ]);
     });
 
@@ -54,34 +54,37 @@ Route::group([
         ]);
     });
 
-    // 师傅端
+    // 水可邦 师傅端
     $router->group([
         'namespace' => 'SKB\Master',
     ], function ($router) {
         $router->resources([
 
             // 水可邦 银行卡管理
-            'skb_bank_card'          => SkbBankCardController::class,
+            'skb_bank_card'          => SkbBankCardController::class,  // by caoxl
             // 水可邦 支付宝管理
-            'skb_alipay'             => SkbAlipayController::class,
+            'skb_alipay'             => SkbAlipayController::class,  // by caoxl
             // 水可邦 提现申请
-            'skb_withdraw_log'       => SkbWithdrawLogController::class,
+            'skb_withdraw_log'       => SkbWithdrawLogController::class,  // by caoxl
             // 水可邦 服务类别
-            'skb_service_cate'       => SkbServiceCateController::class,
+            'skb_service_cate'       => SkbServiceCateController::class,  // by caoxl
             // 水可邦 师傅认证
-            'skb_master_verify'      => SkbMasterVerifyController::class    // by jizw
-
+            'skb_master_verify'      => SkbMasterVerifyController::class,    // by jizw
+            // 水可邦 意见反馈V2
+            'skb_feedback'           => SkbFeedbackController::class, // by caoxl
         ]);
     });
 
-    // 用户端端
+    // 水可邦 用户端
     $router->group([
         'namespace' => 'SKB\User',
     ], function ($router) {
         $router->resources([
 
-            // 评论管理
-            'skb_cmt'          => SkbCommentsController::class,
+            // 水可邦 评论管理
+            'skb_cmt'                 => SkbCommentsController::class, // by caoxl
+            // 水可邦 意见反馈V3
+            'skb_feedback_user'       => SkbFeedbackUserController::class, // by caoxl
 
         ]);
     });

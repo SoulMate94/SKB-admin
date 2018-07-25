@@ -25,7 +25,7 @@ class SkbSuggestionsController extends Controller
         return Admin::content(function (Content $content) {
 
             $content->header('意见反馈');
-            $content->description('description');
+            $content->description('常规设计');
 
             $content->body($this->grid());
         });
@@ -81,24 +81,17 @@ class SkbSuggestionsController extends Controller
             $grid->feedback_img('反馈人图片')->image('', 100, 100);
             //$grid->reply_name('回复人姓名');
             //$grid->reply_content('回复内容');
-
-            // 禁用创建按钮
-            $grid->disableCreation();
-            // 禁用导出数据按钮
-            $grid->disableExport();
-
             $grid->created_at('创建时间');
-            //$grid->updated_at('回复时间');
+
+            $grid->disableExport();
+            $grid->disableCreateButton();
 
             $grid->filter(function($filter){
-
                 // 去掉默认的id过滤器
                 $filter->disableIdFilter();
-
                 // 在这里添加字段过滤器
                 $filter->like('feedback_name', '反馈人姓名');
                 $filter->like('feedback_mobile', '反馈人手机号码');
-
             });
         });
     }

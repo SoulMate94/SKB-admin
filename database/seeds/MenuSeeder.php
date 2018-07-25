@@ -222,14 +222,46 @@ class MenuSeeder extends Seeder
         ]);
 
         // 水可邦-意见反馈
-        $Suggestions        =   Menu::firstOrCreate([
-            'uri' => 'suggestions'
+        $Suggestions = Menu::firstOrCreate([
+            'uri' => 'suggestions_menu'
         ], [
             'parent_id' => 0,
             'order' => 99,
             'title' => '意见反馈',
-            'icon' => 'fa-mail-reply-all',
+            'icon'  => 'fa-mail-reply-all',
+            'uri'   => 'suggestions_menu'
+        ]);
+        // V1
+        Menu::firstOrCreate([
             'uri' => 'suggestions'
+        ], [
+            'parent_id' => $Suggestions->id,
+            'order' => 1,
+            'title' => '意见反馈V1',
+            'icon'  => 'fa-mail-reply-all',
+            'uri'   => 'suggestions'
+        ]);
+
+        // V2
+        Menu::firstOrCreate([
+            'uri' => 'skb_feedback'
+        ], [
+            'parent_id' => $Suggestions->id,
+            'order' => 2,
+            'title' => '意见反馈V2',
+            'icon'  => 'fa-mail-reply-all',
+            'uri'   => 'skb_feedback'
+        ]);
+
+        // V3
+        Menu::firstOrCreate([
+            'uri' => 'skb_feedback_user'
+        ], [
+            'parent_id' => $Suggestions->id,
+            'order' => 2,
+            'title' => '意见反馈V3',
+            'icon'  => 'fa-mail-reply-all',
+            'uri'   => 'skb_feedback_user'
         ]);
 
         // 水可邦--用户端--start

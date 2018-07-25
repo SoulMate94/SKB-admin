@@ -90,8 +90,6 @@ class SkbOpenAreaController extends Controller
                 return SkbAreaModel::find($district)->name;
             })->label('info');
 
-            // $grid->street('街道')->label('default');
-
             $is_open = [
                 'on'  => ['value' => 1, 'text' => '开放', 'color' => 'primary'],
                 'off' => ['value' => 0, 'text' => '关闭', 'color' => 'default'],
