@@ -17,7 +17,6 @@ class CreateSkbBankCardTable extends Migration
             $table->increments('id');
             $table->integer('master_id')->comment('师傅ID');
             $table->string('real_name')->comment('真实姓名');
-            $table->string('id_number')->comment('身份证号');
             $table->char('bank_reserve_mobile')->comment('银行预留手机号');
             $table->string('bank')->comment('银行名称缩写')->nullable();
             $table->string('bank_card_number')->comment('银行卡号');

@@ -96,11 +96,11 @@ Route::group([
         $router->resources([
 
             // 水可净 订单管理
-            'skj_orders'             => ScicleanOrdersController::class,
+            'skj_orders'             => ScicleanOrdersController::class,  // by caoxl
             // 水可净 分类管理
-            'skj_cate'               => ScicleanCatesController::class,
+            'skj_cate'               => ScicleanCatesController::class, // by caoxl
             // 水可净 价格管理
-            'skj_price'              => ScicleanPriceController::class,
+            'skj_price'              => ScicleanPriceController::class, // by caoxl
             // 水可净 水质解决方案调查系统
             'skj_solution_question'  => SkjSolutionQuestionController::class,  // by jizw
             // 水可净 质量管理系统
@@ -118,15 +118,15 @@ Route::group([
         $router->resources([
 
             // 水可邦 净水器机型
-            'skb_clean_type'         => SkbCleanTypeController::class,
+            'skb_clean_type'         => SkbCleanTypeController::class,  // by caoxl
             // 售后 滤芯列表
-            'skb_filter'             => SkbFilterController::class,
+            'skb_filter'             => SkbFilterController::class,  // by caoxl
             // 售后 滤芯等级
-            'skb_filter_level'       => SkbFilterLevelController::class,
+            'skb_filter_level'       => SkbFilterLevelController::class,  // by caoxl
             // 售后 售后服务申请
-            'after_sale_list'        => AfterSaleListController::class,
+            'after_sale_list'        => AfterSaleListController::class,  // by caoxl
             // 售后 滤芯安装记录
-            'skb_filter_install'     => SkbFilterInstallController::class,
+            'skb_filter_install'     => SkbFilterInstallController::class,  // by caoxl
 
         ]);
     });
@@ -135,19 +135,19 @@ Route::group([
     $router->resources([
 
         // 水可邦 用户管理
-        'skb_users'                  => SkbUsersController::class,
+        'skb_users'                  => SkbUsersController::class,  // by caoxl
 
 
     ]);
 
     // 其他
-    $router->get('after_sale_list/{id}/show', 'AfterSale\AfterSaleListController@show');
+    $router->get('after_sale_list/{id}/show', 'AfterSale\AfterSaleListController@show');  // by caoxl
 
     $router->get('skj_manage_solution/{id}/show', 'SKj\SkjManageSolutionController@show');  // by jizw
 
-    $router->get('skb/area/city', 'SKB\Common\SkbOpenAreaController@city');
+    $router->get('skb/area/city', 'SKB\Common\SkbOpenAreaController@city');  // by caoxl
 
-    $router->get('skb/area/district', 'SKB\Common\SkbOpenAreaController@district');
+    $router->get('skb/area/district', 'SKB\Common\SkbOpenAreaController@district');  // by caoxl
 
     $router->get('skb/master/verify/productType', 'SKB\Master\SkbMasterVerifyController@productType');
 
