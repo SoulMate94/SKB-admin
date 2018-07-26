@@ -126,7 +126,7 @@ class MessageController extends Controller
 
                 $openid      = SkbUsersModel::select('openid')
                                                 ->where(['id' => $user_id])
-                                                ->get();
+                                                ->first();
                 if($openid){
                     $openid      = $openid->openid;
                     $template_id = 'messageNotification';
