@@ -136,7 +136,7 @@ class MessageController extends Controller
                         date('y-m-d')
                     ];
 
-                    $response = Curl::to('https://skb-api.sciclean.cn/')
+                    $response = Curl::to('https://skb-api.sciclean.cn/system/wechat/push/admin')
                         ->withData([
                             'user_id'     => $user_id,
                             'open_id'     => $openid,
