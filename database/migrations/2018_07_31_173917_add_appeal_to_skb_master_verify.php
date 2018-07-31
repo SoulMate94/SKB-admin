@@ -14,7 +14,7 @@ class AddAppealToSkbMasterVerify extends Migration
     public function up()
     {
         Schema::table('skb_master_verify', function (Blueprint $table) {
-            $table->text('appeal')->comment('申诉字段');
+            $table->text('appeal')->comment('申诉字段')->nullable();
         });
     }
 
