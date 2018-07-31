@@ -197,6 +197,7 @@ class SkbMasterVerifyController  extends Controller
                 });
             });
 
+            $form->display('id_card_img');
             $form->multipleImage('id_card_img', '身份证照片')
                 ->move('/masterVerify/'.date('Ymd'))
                 ->uniqueName()
