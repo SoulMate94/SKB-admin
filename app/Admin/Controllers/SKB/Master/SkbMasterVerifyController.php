@@ -198,10 +198,10 @@ class SkbMasterVerifyController  extends Controller
             });
 
             $form->multipleImage('id_card_img', '身份证照片')
-                ->move('/masterVerify/'.date('Ymd'))
-                ->uniqueName()
-                ->removable()// 多图删除
-                ->help('这几张图片不可更改');
+                    ->move('/masterVerify/'.date('Ymd'))
+                    ->uniqueName()
+                    ->removable()// 多图删除
+                    ->help('这几张图片不可更改');
 
             $form ->display('product_type_id', '产品类别')
                   ->with(function ($dat) {
