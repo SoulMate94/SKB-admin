@@ -22,7 +22,7 @@ class CreateSkbUsersTable extends Migration
             $table->string('avatar')->comment('微信头像,用户头像');
             $table->char('mobile')->comment('微信手机号,用户手机号')->nullable();
             $table->tinyInteger('is_del')->default('0')->comment('1表示删除,0表示未删除');
-            $table->tinyInteger('role')->default('1')->comment('1表示仅是用户,2表示仅是师傅,3表示两者皆是');
+            $table->tinyInteger('role')->default('0')->comment('1表示仅是用户,2表示仅是师傅,3表示两者皆是');
             $table->timestamps();
             $table->softDeletes();
         });

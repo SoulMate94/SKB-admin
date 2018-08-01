@@ -125,24 +125,26 @@ class MessageController extends Controller
                 $user_id     = $form->model()->recipient_id;
 
                 $openid      = SkbUsersModel::select('openid')
-                                                ->where(['id',$user_id])
-                                                ->get()
-                                                ->openid;
-                $template_id = 'messageNotification';
-                $dat         = [
-                            'Admin',
-                            $form->model()->content,
-                            date('y-m-d')
-                        ];
+                                                ->where(['id' => $user_id])
+                                                ->first();
+                if($openid){
+                    $openid      = $openid->openid;
+                    $template_id = 'messageNotification';
+                    $dat         = [
+                        'Admin',
+                        $form->model()->content,
+                        date('y-m-d')
+                    ];
 
-                $response = Curl::to('https://skb-api.sciclean.cn/')
-                                ->withData([
-                                    'user_id'     => $user_id,
-                                    'open_id'     => $openid,
-                                    'template_id' => $template_id,
-                                    'dat'         => json_encode($dat),
-                                ])
-                                ->post();
+                    $response = Curl::to('https://skb-api.sciclean.cn/system/wechat/push/admin')
+                        ->withData([
+                            'user_id'     => $user_id,
+                            'open_id'     => $openid,
+                            'template_id' => $template_id,
+                            'dat'         => json_encode($dat),
+                        ])
+                        ->post();
+                }
             });
         });
     }
