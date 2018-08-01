@@ -130,21 +130,21 @@ class SkbBankCardController extends Controller
             ];
             $form->switch('is_verify', '是否通过审核')->states($is_verify);
 
-            $form->saving(function (Form $form) {
-
-                $bank = BankCard::info($form->bank_card_number);
-
-                if (!$bank['validated']) {
-
-                    $error = new MessageBag([
-                        'title'   => '未知的银行卡号',
-                        'message' => '请重新填写正确的银行卡',
-                    ]);
-
-                    return back()->with(compact('error'));
-                }
-
-            });
+//            $form->saving(function (Form $form) {
+//
+//                $bank = BankCard::info($form->bank_card_number);
+//
+//                if (!$bank['validated']) {
+//
+//                    $error = new MessageBag([
+//                        'title'   => '未知的银行卡号',
+//                        'message' => '请重新填写正确的银行卡',
+//                    ]);
+//
+//                    return back()->with(compact('error'));
+//                }
+//
+//            });
         });
     }
 }
